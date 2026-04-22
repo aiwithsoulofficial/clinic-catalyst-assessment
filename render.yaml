@@ -1,0 +1,13 @@
+services:
+  - type: web
+    runtime: static
+    name: clinic-catalyst-assessment
+    buildCommand: echo "Static site - no build needed"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
