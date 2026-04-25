@@ -1209,18 +1209,25 @@
     formData.append('_captcha', 'false');
     formData.append('_template', 'table');
 
+    // Send email notification
     fetch('https://formsubmit.co/ajax/aiwithsoul@gmail.com', {
       method: 'POST',
       body: formData
-    }).then(r => r.json()).then(() => {
-      document.getElementById('interest-form').style.display = 'none';
-      document.getElementById('interest-success').style.display = 'block';
-      document.getElementById('interest-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }).catch(() => {
-      document.getElementById('interest-form').style.display = 'none';
-      document.getElementById('interest-success').style.display = 'block';
-      document.getElementById('interest-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
+    }).catch(() => {});
+
+    // Trigger Aria outbound call
+    if (data.phone) {
+      fetch('/api/trigger-call', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: data.phone, name: data.name })
+      }).catch(() => {});
+    }
+
+    // Show success immediately
+    document.getElementById('interest-form').style.display = 'none';
+    document.getElementById('interest-success').style.display = 'block';
+    document.getElementById('interest-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 </script>
 
