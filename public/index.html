@@ -1215,15 +1215,6 @@
       body: formData
     }).catch(() => {});
 
-    // Trigger Aria outbound call
-    if (data.phone) {
-      fetch('/api/trigger-call', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: data.phone, name: data.name })
-      }).catch(() => {});
-    }
-
     // Show success immediately
     document.getElementById('interest-form').style.display = 'none';
     document.getElementById('interest-success').style.display = 'block';
