@@ -70,16 +70,18 @@
   .cover-content { position: relative; z-index: 1; }
 
   .cover .brand-tag {
-    display: inline-block;
-    padding: 8px 28px;
-    border: 2px solid var(--accent);
-    background: var(--accent-soft);
+    display: block;
+    width: 100%;
+    padding: 12px 28px;
+    border: none;
+    background: #e7413f;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: #fff;
     margin-bottom: 48px;
+    text-align: center;
   }
 
   .cover h1 {
@@ -326,6 +328,7 @@
 
   @media (max-width: 700px) {
     .solution-grid { grid-template-columns: 1fr; }
+    #pkg-cards { grid-template-columns: 1fr !important; }
   }
 
   .solution-card {
