@@ -1083,7 +1083,7 @@
         <div>&#8594; Appointment reminders to reduce no-shows</div>
         <div>&#8594; Monthly performance reporting</div>
       </div>
-      <button onclick="showInterestForm('Growth Engine - $1,899/mo')" style="display: block; width: 100%; text-align: center; padding: 12px; background: transparent; border: 1.5px solid var(--accent); color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; margin-top: 12px;">I'm Interested in a Demo</button>
+      <a href="https://api.leadconnectorhq.com/widget/bookings/onboarding-clinic-catalyst" target="_blank" style="display: block; width: 100%; text-align: center; padding: 14px; background: transparent; border: 1.5px solid var(--accent); color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; margin-top: 12px; text-decoration: none;">I Want This - Onboard Me Now</a>
     </div>
     <div style="padding: 24px; border: 2px solid var(--accent); background: var(--accent-soft);">
       <p style="font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;">Full Acquisition System</p>
@@ -1099,45 +1099,11 @@
         <div>&#8594; Bi-weekly strategy calls</div>
         <div>&#8594; Dedicated account manager</div>
       </div>
-      <button onclick="showInterestForm('Full Acquisition - $2,599/mo')" style="display: block; width: 100%; text-align: center; padding: 12px; background: var(--accent); color: var(--bg-dark); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border: none; margin-top: 12px;">I'm Interested in a Demo</button>
+      <a href="https://api.leadconnectorhq.com/widget/bookings/onboarding-clinic-catalyst" target="_blank" style="display: block; width: 100%; text-align: center; padding: 14px; background: var(--accent); color: var(--bg-dark); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border: none; margin-top: 12px; text-decoration: none;">I Want This - Onboard Me Now</a>
     </div>
   </div>
 
-  <!-- INTEREST FORM (hidden until button click) -->
-  <div id="interest-form" style="display: none; max-width: 600px; margin: 0 auto 32px; padding: 32px; border: 2px solid var(--accent); background: var(--bg-darker); text-align: left;">
-    <p style="font-size: 14px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px;">You selected</p>
-    <p id="selected-pkg" style="font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 20px;"></p>
-    <form id="lead-form" onsubmit="submitInterest(event)">
-      <input type="hidden" id="form-package" name="package" value="">
-      <div style="margin-bottom: 16px;">
-        <label style="display: block; font-size: 12px; font-weight: 700; color: var(--white-60); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Your Name</label>
-        <input type="text" name="name" required style="width: 100%; padding: 12px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Full name">
-      </div>
-      <div style="margin-bottom: 16px;">
-        <label style="display: block; font-size: 12px; font-weight: 700; color: var(--white-60); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Email</label>
-        <input type="email" name="email" required style="width: 100%; padding: 12px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="you@clinic.com">
-      </div>
-      <div style="margin-bottom: 16px;">
-        <label style="display: block; font-size: 12px; font-weight: 700; color: var(--white-60); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Phone</label>
-        <input type="tel" name="phone" required style="width: 100%; padding: 12px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="+61 400 000 000">
-      </div>
-      <div style="margin-bottom: 16px;">
-        <label style="display: block; font-size: 12px; font-weight: 700; color: var(--white-60); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Business Name</label>
-        <input type="text" name="business" required style="width: 100%; padding: 12px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Your clinic name">
-      </div>
-      <div style="margin-bottom: 24px;">
-        <label style="display: block; font-size: 12px; font-weight: 700; color: var(--white-60); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Website</label>
-        <input type="url" name="website" style="width: 100%; padding: 12px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="https://yourclinic.com.au">
-      </div>
-      <button type="submit" style="display: block; width: 100%; padding: 14px; background: var(--accent); color: var(--bg-dark); font-size: 14px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer;">Submit - Find Out More</button>
-    </form>
-  </div>
-
-  <!-- SUCCESS MESSAGE (hidden until submit) -->
-  <div id="interest-success" style="display: none; max-width: 600px; margin: 0 auto 32px; padding: 40px; border: 2px solid var(--accent); background: var(--accent-soft); text-align: center;">
-    <p style="font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 12px;">&#10003; We've Got Your Details</p>
-    <p style="font-size: 16px; color: var(--white-80);">Alicia or Kelly will be in touch within 24 hours to walk you through the demo.</p>
-  </div>
+  <!-- Stripe deposit buttons above - link placeholder until Alicia provides Stripe URL -->
 
   <p style="font-size: 16px; color: var(--white-80); margin-bottom: 16px;">Alicia Hagen &amp; Kelly Wotherspoon</p>
 </div>
@@ -1186,51 +1152,6 @@
     updateScores();
   }
 
-  function showInterestForm(pkg) {
-    document.getElementById('selected-pkg').textContent = pkg;
-    document.getElementById('form-package').value = pkg;
-    document.getElementById('interest-form').style.display = 'block';
-    document.getElementById('interest-success').style.display = 'none';
-    document.getElementById('interest-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  function submitInterest(e) {
-    e.preventDefault();
-    const form = document.getElementById('lead-form');
-    const data = {
-      package: form.package.value,
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      business: form.business.value,
-      website: form.website.value,
-      submitted: new Date().toISOString(),
-      source: 'clinic-catalyst-assessment'
-    };
-
-    // Send to FormSubmit (email notification)
-    const formData = new FormData();
-    formData.append('_subject', 'Clinic Catalyst Lead: ' + data.name + ' - ' + data.package);
-    formData.append('package', data.package);
-    formData.append('name', data.name);
-    formData.append('email', data.email);
-    formData.append('phone', data.phone);
-    formData.append('business', data.business);
-    formData.append('website', data.website || 'Not provided');
-    formData.append('_captcha', 'false');
-    formData.append('_template', 'table');
-
-    // Send email notification
-    fetch('https://formsubmit.co/ajax/aiwithsoul@gmail.com', {
-      method: 'POST',
-      body: formData
-    }).catch(() => {});
-
-    // Show success immediately
-    document.getElementById('interest-form').style.display = 'none';
-    document.getElementById('interest-success').style.display = 'block';
-    document.getElementById('interest-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
 </script>
 
 </body>
