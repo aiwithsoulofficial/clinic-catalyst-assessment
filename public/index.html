@@ -913,8 +913,33 @@
   </div>
 </div>
 
-<!-- ═══════ RESULTS ═══════ -->
-<div class="section page-break" style="border-top: 3px solid var(--accent);">
+<!-- ═══════ LEAD CAPTURE ═══════ -->
+<div class="section page-break" style="border-top: 3px solid var(--accent);" id="capture-section">
+  <div class="section-tag">Get Your Results</div>
+  <h2>SEE YOUR FULL RESULTS</h2>
+  <div class="divider"></div>
+  <p style="margin-bottom: 24px;">Enter your details to unlock your personalised results and revenue leak breakdown.</p>
+
+  <div id="capture-form" style="max-width: 500px; margin: 0 auto;">
+    <div style="margin-bottom: 16px;">
+      <input type="text" id="cap-name" required style="width: 100%; padding: 14px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Your name">
+    </div>
+    <div style="margin-bottom: 16px;">
+      <input type="email" id="cap-email" required style="width: 100%; padding: 14px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Email address">
+    </div>
+    <div style="margin-bottom: 16px;">
+      <input type="tel" id="cap-phone" style="width: 100%; padding: 14px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Phone (optional)">
+    </div>
+    <div style="margin-bottom: 16px;">
+      <input type="text" id="cap-business" style="width: 100%; padding: 14px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Clinic name (optional)">
+    </div>
+    <button onclick="captureAndReveal()" style="display: block; width: 100%; padding: 16px; background: var(--accent); color: var(--bg-dark); font-size: 16px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer;">Show My Results</button>
+    <p style="font-size: 11px; color: var(--white-40); text-align: center; margin-top: 10px;">We'll send you a copy of your results. No spam.</p>
+  </div>
+</div>
+
+<!-- ═══════ RESULTS (hidden until capture) ═══════ -->
+<div class="section page-break" style="border-top: 3px solid var(--accent); display: none;" id="results-section">
   <div class="section-tag">Your Results</div>
   <h2>TOTAL YOUR SCORE</h2>
   <div class="divider"></div>
@@ -941,7 +966,10 @@
     <div class="result-label">STRONG - READY TO SCALE</div>
     <p>Your systems are working well. Your next move is to <strong style="color: var(--accent);">automate and scale</strong> what's already working. AI integration can multiply your team's capacity without adding headcount.</p>
   </div>
-</div>
+</div> <!-- close results-section -->
+
+<!-- ═══════ EVERYTHING BELOW HIDDEN UNTIL CAPTURE ═══════ -->
+<div id="post-capture" style="display: none;">
 
 <!-- ═══════ COST CALCULATOR ═══════ -->
 <div class="section page-break">
@@ -1108,6 +1136,8 @@
   <p style="font-size: 16px; color: var(--white-80); margin-bottom: 16px;">Alicia Hagen &amp; Kelly Wotherspoon</p>
 </div>
 
+</div> <!-- close post-capture -->
+
 <!-- ═══════ DOWNLOAD BAR ═══════ -->
 <div class="download-bar no-print">
   <button onclick="window.print()">Download as PDF</button>
@@ -1150,6 +1180,79 @@
   function resetAll() {
     document.querySelectorAll('.checkbox').forEach(c => c.classList.remove('checked'));
     updateScores();
+  }
+
+  // Supabase config
+  const SUPABASE_URL = 'https://jiquevvzrdavgqonvvug.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4';
+
+  function getScores() {
+    const sections = [
+      { key: 'score_lead_response', start: 0, count: 5 },
+      { key: 'score_followup', start: 5, count: 5 },
+      { key: 'score_booking', start: 10, count: 5 },
+      { key: 'score_dropoff', start: 15, count: 5 },
+      { key: 'score_tracking', start: 20, count: 5 },
+      { key: 'score_retention', start: 25, count: 5 }
+    ];
+    const allBoxes = document.querySelectorAll('.checkbox');
+    const scores = {};
+    let total = 0;
+    sections.forEach(sec => {
+      let count = 0;
+      for (let i = sec.start; i < sec.start + sec.count; i++) {
+        if (allBoxes[i] && allBoxes[i].classList.contains('checked')) count++;
+      }
+      scores[sec.key] = count;
+      total += count;
+    });
+    scores.total_score = total;
+    return scores;
+  }
+
+  function captureAndReveal() {
+    const name = document.getElementById('cap-name').value.trim();
+    const email = document.getElementById('cap-email').value.trim();
+    const phone = document.getElementById('cap-phone').value.trim();
+    const business = document.getElementById('cap-business').value.trim();
+
+    if (!name || !email) {
+      alert('Please enter your name and email to see your results.');
+      return;
+    }
+
+    const scores = getScores();
+
+    // Save to Supabase
+    fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_leads', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone || null,
+        business: business || null,
+        score_lead_response: scores.score_lead_response,
+        score_followup: scores.score_followup,
+        score_booking: scores.score_booking,
+        score_dropoff: scores.score_dropoff,
+        score_tracking: scores.score_tracking,
+        score_retention: scores.score_retention,
+        total_score: scores.total_score,
+        source: 'assessment'
+      })
+    }).catch(() => {});
+
+    // Reveal results
+    document.getElementById('capture-form').innerHTML = '<p style="text-align:center;color:var(--accent);font-weight:700;font-size:18px;">&#10003; Results unlocked, ' + name.split(' ')[0] + '!</p>';
+    document.getElementById('results-section').style.display = 'block';
+    document.getElementById('post-capture').style.display = 'block';
+    document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
   }
 
 </script>
