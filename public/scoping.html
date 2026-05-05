@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinic Catalyst - Pre-Call Scoping</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: #0A2A28;
+  --teal: #00D4BC;
+  --teal-mid: #00B4A0;
+  --teal-dark: #007A6E;
+  --teal-bg: rgba(0,212,188,0.06);
+  --teal-border: rgba(0,212,188,0.2);
+  --white: #FFFFFF;
+  --grey-50: #F8FAFA;
+  --grey-100: #EEF2F2;
+  --grey-200: #D5DEDE;
+  --grey-400: #8A9B9A;
+  --grey-600: #5A6D6C;
+  --red: #E84040;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Open Sans', sans-serif; background: var(--grey-50); color: var(--dark); line-height: 1.7; }
+
+.header { background: var(--dark); padding: 40px; text-align: center; position: relative; overflow: hidden; }
+.header::before { content: ''; position: absolute; inset: 0; opacity: 0.12; background-image: radial-gradient(circle, var(--teal) 1px, transparent 1px); background-size: 50px 50px; }
+.header-logo { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; position: relative; z-index: 1; }
+.header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(20px, 3vw, 28px); font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: 1px; position: relative; z-index: 1; margin-bottom: 8px; }
+.header h1 span { color: var(--teal); }
+.header-sub { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 300; position: relative; z-index: 1; max-width: 500px; margin: 0 auto; }
+
+.container { max-width: 700px; margin: 0 auto; padding: 32px 24px; }
+
+.intro { background: var(--white); border: 1px solid var(--grey-200); padding: 24px; margin-bottom: 24px; font-size: 13px; color: var(--grey-600); line-height: 1.8; }
+.intro strong { color: var(--dark); }
+
+.form-section { background: var(--white); border: 1px solid var(--grey-200); padding: 28px; margin-bottom: 20px; }
+.form-section-title { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--teal-dark); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--teal); }
+
+.field { margin-bottom: 18px; }
+.field:last-child { margin-bottom: 0; }
+.field label { display: block; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); margin-bottom: 6px; }
+.field .hint { font-size: 11px; color: var(--grey-400); font-weight: 400; text-transform: none; letter-spacing: 0; margin-bottom: 6px; display: block; }
+.field input, .field textarea, .field select {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  border: 1.5px solid var(--grey-200);
+  background: var(--grey-50);
+  color: var(--dark);
+  transition: border-color 0.2s;
+  outline: none;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: var(--teal);
+  background: var(--white);
+}
+.field textarea { min-height: 80px; resize: vertical; }
+.field select { cursor: pointer; }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+
+.submit-section { text-align: center; padding: 32px 0; }
+.submit-btn {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--dark);
+  padding: 14px 48px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.submit-btn:hover { background: #00ffec; }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.submit-note { font-size: 11px; color: var(--grey-400); margin-top: 10px; }
+
+.success-msg { display: none; text-align: center; padding: 60px 24px; }
+.success-msg h2 { font-family: 'Montserrat', sans-serif; font-size: 24px; color: var(--teal-dark); margin-bottom: 12px; }
+.success-msg p { font-size: 14px; color: var(--grey-600); max-width: 500px; margin: 0 auto; }
+
+.footer { text-align: center; padding: 24px 0; font-size: 10px; color: var(--grey-400); font-family: 'Montserrat', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">Clinic Catalyst</div>
+  <h1>Pre-Call <span>Scoping Form</span></h1>
+  <div class="header-sub">Takes 3 minutes. Helps us come to your call with quick wins ready to show you.</div>
+</div>
+
+<div class="container">
+
+<div class="intro">
+  <strong>We review this before your call.</strong> The more we know upfront, the more value we can deliver in our session together. We'll walk in ready to show you exactly where revenue is leaking and how to fix it.
+</div>
+
+<form id="scoping-form" onsubmit="submitForm(event)">
+
+<!-- SECTION 1: YOUR CLINIC -->
+<div class="form-section">
+  <div class="form-section-title">Your Clinic</div>
+  <div class="field">
+    <label>Business name</label>
+    <input type="text" id="business_name" required placeholder="e.g. Lumiere Skin and Body">
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label>Your name</label>
+      <input type="text" id="contact_name" required placeholder="Full name">
+    </div>
+    <div class="field">
+      <label>Clinic type</label>
+      <select id="clinic_type" required>
+        <option value="">Select...</option>
+        <option>Aesthetics / Cosmetic</option>
+        <option>Dental</option>
+        <option>Medical / GP</option>
+        <option>Physiotherapy</option>
+        <option>Chiropractic</option>
+        <option>Psychology / Counselling</option>
+        <option>Veterinary</option>
+        <option>Optometry</option>
+        <option>Dermatology</option>
+        <option>Allied Health</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="email" required placeholder="you@clinic.com">
+    </div>
+    <div class="field">
+      <label>Phone</label>
+      <input type="tel" id="phone" placeholder="+61 400 000 000">
+    </div>
+  </div>
+  <div class="field">
+    <label>Website</label>
+    <input type="url" id="website" placeholder="https://yourclinic.com.au">
+  </div>
+  <div class="field">
+    <label>How many practitioners?</label>
+    <input type="number" id="num_practitioners" placeholder="e.g. 4">
+  </div>
+</div>
+
+<!-- SECTION 2: HOW YOU HANDLE LEADS NOW -->
+<div class="form-section">
+  <div class="form-section-title">How You Handle Leads Now</div>
+  <div class="field">
+    <label>What booking system do you use?</label>
+    <select id="booking_system" required>
+      <option value="">Select...</option>
+      <option>Cliniko</option>
+      <option>Phorest</option>
+      <option>Timely</option>
+      <option>Fresha</option>
+      <option>Mindbody</option>
+      <option>Jane App</option>
+      <option>GoHighLevel</option>
+      <option>Square Appointments</option>
+      <option>Paper / manual</option>
+      <option>None</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>How do you currently handle new enquiries?</label>
+    <span class="hint">Who responds? How quickly? What happens after hours?</span>
+    <textarea id="how_handle_enquiries" placeholder="e.g. Receptionist answers during business hours, after-hours goes to voicemail, DMs checked once a day"></textarea>
+  </div>
+  <div class="field">
+    <label>How many new enquiries per month (roughly)?</label>
+    <select id="monthly_leads">
+      <option value="">Select...</option>
+      <option>Under 20</option>
+      <option>20 - 50</option>
+      <option>50 - 100</option>
+      <option>100 - 200</option>
+      <option>200+</option>
+      <option>No idea</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>What's your biggest frustration right now?</label>
+    <span class="hint">The thing that keeps you up at night about your clinic's growth</span>
+    <textarea id="biggest_frustration" placeholder="e.g. We spend money on ads but can't respond fast enough, people book somewhere else"></textarea>
+  </div>
+</div>
+
+<!-- SECTION 3: ADS & MARKETING -->
+<div class="form-section">
+  <div class="form-section-title">Ads & Marketing</div>
+  <div class="field">
+    <label>Are you currently running ads?</label>
+    <select id="running_ads">
+      <option value="">Select...</option>
+      <option>Yes - managing ourselves</option>
+      <option>Yes - using an agency</option>
+      <option>Previously but stopped</option>
+      <option>Never</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Monthly ad budget you're comfortable with</label>
+    <span class="hint">This is separate from the Clinic Catalyst package fee</span>
+    <select id="ad_budget">
+      <option value="">Select...</option>
+      <option>$500 - $1,000/month</option>
+      <option>$1,000 - $2,000/month</option>
+      <option>$2,000 - $5,000/month</option>
+      <option>$5,000+/month</option>
+      <option>Not sure yet</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>What treatment or offer do you want to promote first?</label>
+    <span class="hint">The thing that gets new patients in the door</span>
+    <input type="text" id="lead_offer" placeholder="e.g. $199 Hydrafacial intro offer, Free skin consultation">
+  </div>
+</div>
+
+<!-- SECTION 4: YOUR ONLINE PRESENCE -->
+<div class="form-section">
+  <div class="form-section-title">Your Online Presence</div>
+  <div class="field">
+    <label>Facebook page URL</label>
+    <input type="text" id="facebook_url" placeholder="https://facebook.com/yourclinic">
+  </div>
+  <div class="field">
+    <label>Instagram handle</label>
+    <input type="text" id="instagram_handle" placeholder="@yourclinic">
+  </div>
+  <div class="field">
+    <label>Do you have a Google Business Profile?</label>
+    <select id="google_business">
+      <option value="">Select...</option>
+      <option>Yes - claimed and verified</option>
+      <option>Yes - but not sure if verified</option>
+      <option>No</option>
+      <option>Not sure</option>
+    </select>
+  </div>
+</div>
+
+<div class="submit-section">
+  <button type="submit" class="submit-btn" id="submit-btn">Submit</button>
+  <div class="submit-note">We'll review this before your call so we can deliver maximum value.</div>
+</div>
+
+</form>
+
+<div class="success-msg" id="success">
+  <h2>We've Got Everything We Need</h2>
+  <p>We're reviewing your answers now. On your call, we'll show you exactly where you're losing revenue and how Aria fixes it - live.</p>
+  <p style="margin-top: 16px; font-size: 13px; color: var(--teal-dark); font-weight: 600;">See you on the call.</p>
+</div>
+
+<div class="footer">Clinic Catalyst - We Don't Just Run Ads. We Fill Clinics.</div>
+
+</div>
+
+<script>
+const SUPABASE_URL = 'https://jiquevvzrdavgqonvvug.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4';
+
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const data = {
+    business_name: document.getElementById('business_name').value.trim(),
+    contact_name: document.getElementById('contact_name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim() || null,
+    clinic_type: document.getElementById('clinic_type').value,
+    website: document.getElementById('website').value.trim() || null,
+    num_practitioners: parseInt(document.getElementById('num_practitioners').value) || null,
+    booking_system: document.getElementById('booking_system').value,
+    how_handle_enquiries: document.getElementById('how_handle_enquiries').value.trim() || null,
+    monthly_leads: document.getElementById('monthly_leads').value || null,
+    biggest_frustration: document.getElementById('biggest_frustration').value.trim() || null,
+    lead_offer: document.getElementById('lead_offer').value.trim() || null,
+    running_ads: document.getElementById('running_ads').value || null,
+    ad_budget: document.getElementById('ad_budget').value || null,
+    facebook_url: document.getElementById('facebook_url').value.trim() || null,
+    instagram_handle: document.getElementById('instagram_handle').value.trim() || null,
+    google_business: document.getElementById('google_business').value || null
+  };
+
+  // Save to Supabase
+  fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_scoping', {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify(data)
+  }).then(() => {
+    document.getElementById('scoping-form').style.display = 'none';
+    document.querySelector('.intro').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }).catch(() => {
+    document.getElementById('scoping-form').style.display = 'none';
+    document.querySelector('.intro').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+</script>
+
+</body>
+</html>
