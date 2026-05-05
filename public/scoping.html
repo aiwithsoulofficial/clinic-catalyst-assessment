@@ -96,7 +96,7 @@ body { font-family: 'Open Sans', sans-serif; background: var(--grey-50); color: 
 <div class="header">
   <div class="header-logo">Clinic Catalyst</div>
   <h1>Pre-Call <span>Scoping Form</span></h1>
-  <div class="header-sub">Takes 3 minutes. Helps us come to your call with quick wins ready to show you.</div>
+  <div class="header-sub">Takes 5 minutes. Helps us come to your call with quick wins ready to show you.</div>
 </div>
 
 <div class="container">
@@ -157,11 +157,11 @@ body { font-family: 'Open Sans', sans-serif; background: var(--grey-50); color: 
   </div>
 </div>
 
-<!-- SECTION 2: HOW YOU HANDLE LEADS NOW -->
+<!-- SECTION 2: YOUR CURRENT SYSTEMS -->
 <div class="form-section">
-  <div class="form-section-title">How You Handle Leads Now</div>
+  <div class="form-section-title">Your Current Systems</div>
   <div class="field">
-    <label>What booking system do you use?</label>
+    <label>Booking / practice management system</label>
     <select id="booking_system" required>
       <option value="">Select...</option>
       <option>Cliniko</option>
@@ -177,6 +177,131 @@ body { font-family: 'Open Sans', sans-serif; background: var(--grey-50); color: 
       <option>Other</option>
     </select>
   </div>
+  <div class="field">
+    <label>If "Other", what system?</label>
+    <input type="text" id="booking_system_name" placeholder="e.g. Nookal, PowerDiary, custom system">
+  </div>
+  <div class="field">
+    <label>CRM (customer relationship management)</label>
+    <span class="hint">Where do you track leads and client interactions? This might be the same as your booking system.</span>
+    <select id="crm_system">
+      <option value="">Select...</option>
+      <option>Same as booking system</option>
+      <option>GoHighLevel</option>
+      <option>HubSpot</option>
+      <option>Salesforce</option>
+      <option>Spreadsheet / Google Sheets</option>
+      <option>We don't have one</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Email marketing platform</label>
+    <select id="email_marketing">
+      <option value="">Select...</option>
+      <option>Mailchimp</option>
+      <option>ActiveCampaign</option>
+      <option>Klaviyo</option>
+      <option>Built into booking system</option>
+      <option>We don't do email marketing</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Phone system</label>
+    <span class="hint">How do patients call you? Landline, mobile, VoIP?</span>
+    <select id="phone_system">
+      <option value="">Select...</option>
+      <option>Landline only</option>
+      <option>Mobile only</option>
+      <option>VoIP (8x8, RingCentral, Vonage, etc.)</option>
+      <option>Mix of landline and mobile</option>
+      <option>Answering service</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Do you use SMS to communicate with patients?</label>
+    <select id="sms_platform">
+      <option value="">Select...</option>
+      <option>Yes - through booking system</option>
+      <option>Yes - separate platform (e.g. MessageMedia, Twilio)</option>
+      <option>Yes - manually from phone</option>
+      <option>No</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Website platform</label>
+    <select id="website_platform">
+      <option value="">Select...</option>
+      <option>WordPress</option>
+      <option>Squarespace</option>
+      <option>Wix</option>
+      <option>Shopify</option>
+      <option>Custom built</option>
+      <option>GoHighLevel</option>
+      <option>Don't have a website</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Website hosting / domain provider</label>
+    <input type="text" id="hosting_provider" placeholder="e.g. GoDaddy, Crazy Domains, Cloudflare, not sure">
+  </div>
+  <div class="field">
+    <label>Payment processor</label>
+    <select id="payment_processor">
+      <option value="">Select...</option>
+      <option>Stripe</option>
+      <option>Square</option>
+      <option>Tyro</option>
+      <option>EFTPOS terminal only</option>
+      <option>Through booking system</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Are you using any AI tools already?</label>
+    <select id="using_ai">
+      <option value="">Select...</option>
+      <option>No - nothing</option>
+      <option>ChatGPT for content</option>
+      <option>AI chatbot on website</option>
+      <option>AI phone answering</option>
+      <option>Multiple AI tools</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>If using AI, what tools and what for?</label>
+    <span class="hint">E.g. "ChatGPT for writing social posts", "Tidio chatbot on website for FAQs", "nothing yet"</span>
+    <textarea id="ai_tools" placeholder="e.g. ChatGPT for social media captions, tried a chatbot but removed it, using Canva AI for graphics"></textarea>
+  </div>
+  <div class="field">
+    <label>How comfortable is your team with technology?</label>
+    <span class="hint">This helps us gauge how much training and support you'll need</span>
+    <select id="tech_comfort">
+      <option value="">Select...</option>
+      <option>Very comfortable - we pick up new tools quickly</option>
+      <option>Moderate - we can learn but need guidance</option>
+      <option>Low - we struggle with new systems</option>
+      <option>Mixed - some staff are tech-savvy, others aren't</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Who manages your systems day-to-day?</label>
+    <span class="hint">Who would we train and hand things over to?</span>
+    <input type="text" id="systems_person" placeholder="e.g. Practice manager Sarah, I do everything myself, outsourced to VA">
+  </div>
+  <div class="field">
+    <label>What's the ONE thing you wish technology could do for your clinic?</label>
+    <textarea id="tech_wishlist" placeholder="e.g. Answer the phone when we're busy, follow up leads automatically, stop losing patients mid-treatment"></textarea>
+  </div>
+</div>
+
+<!-- SECTION 3: LEAD HANDLING & PATIENT MANAGEMENT -->
+<div class="form-section">
+  <div class="form-section-title">Lead Handling & Patient Management</div>
   <div class="field">
     <label>How do you currently handle new enquiries?</label>
     <span class="hint">Who responds? How quickly? What happens after hours?</span>
@@ -195,13 +320,81 @@ body { font-family: 'Open Sans', sans-serif; background: var(--grey-50); color: 
     </select>
   </div>
   <div class="field">
+    <label>What happens when a lead doesn't book on first contact?</label>
+    <select id="followup_process">
+      <option value="">Select...</option>
+      <option>We follow up once then move on</option>
+      <option>We have a follow-up sequence (call, SMS, email)</option>
+      <option>We don't follow up</option>
+      <option>It depends on who's working</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>How do you send appointment reminders?</label>
+    <select id="reminder_system">
+      <option value="">Select...</option>
+      <option>Automatic through booking system</option>
+      <option>Manual SMS or call</option>
+      <option>Email only</option>
+      <option>We don't send reminders</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>What's your no-show rate?</label>
+    <select id="no_show_rate">
+      <option value="">Select...</option>
+      <option>Under 5% - rarely happens</option>
+      <option>5-10% - occasional</option>
+      <option>10-20% - regular problem</option>
+      <option>20%+ - significant issue</option>
+      <option>No idea</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>How do you communicate with existing patients between visits?</label>
+    <select id="patient_comms">
+      <option value="">Select...</option>
+      <option>Email newsletters</option>
+      <option>SMS campaigns</option>
+      <option>Social media only</option>
+      <option>We don't - they come back on their own</option>
+      <option>Mix of email + SMS + social</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Do you use a review platform?</label>
+    <input type="text" id="review_platform" placeholder="e.g. Google Reviews, RealSelf, RateMDs, none">
+  </div>
+  <div class="field">
     <label>What's your biggest frustration right now?</label>
     <span class="hint">The thing that keeps you up at night about your clinic's growth</span>
     <textarea id="biggest_frustration" placeholder="e.g. We spend money on ads but can't respond fast enough, people book somewhere else"></textarea>
   </div>
 </div>
 
-<!-- SECTION 3: ADS & MARKETING -->
+<!-- SECTION 4: YOUR SERVICES -->
+<div class="form-section">
+  <div class="form-section-title">Your Services</div>
+  <div class="field">
+    <label>Top 3-5 treatments or services by revenue</label>
+    <textarea id="top_treatments" placeholder="e.g.&#10;1. Dermal Filler - $650&#10;2. Anti-wrinkle - $350&#10;3. Hydrafacial - $199&#10;4. Skin Needling - $299&#10;5. LED Therapy - $89"></textarea>
+  </div>
+  <div class="field">
+    <label>Average treatment value</label>
+    <input type="text" id="avg_treatment_value" placeholder="e.g. $300">
+  </div>
+  <div class="field">
+    <label>What treatment or offer do you want to promote first?</label>
+    <span class="hint">The thing that gets new patients in the door</span>
+    <input type="text" id="lead_offer" placeholder="e.g. $199 Hydrafacial intro offer, Free skin consultation">
+  </div>
+  <div class="field">
+    <label>What's your cancellation / no-show policy?</label>
+    <input type="text" id="cancellation_policy" placeholder="e.g. 24hr notice, $50 fee for no-shows">
+  </div>
+</div>
+
+<!-- SECTION 5: ADS & MARKETING -->
 <div class="form-section">
   <div class="form-section-title">Ads & Marketing</div>
   <div class="field">
@@ -227,13 +420,12 @@ body { font-family: 'Open Sans', sans-serif; background: var(--grey-50); color: 
     </select>
   </div>
   <div class="field">
-    <label>What treatment or offer do you want to promote first?</label>
-    <span class="hint">The thing that gets new patients in the door</span>
-    <input type="text" id="lead_offer" placeholder="e.g. $199 Hydrafacial intro offer, Free skin consultation">
+    <label>Do you use a social media scheduling tool?</label>
+    <input type="text" id="social_scheduler" placeholder="e.g. Later, Hootsuite, Meta Business Suite, none">
   </div>
 </div>
 
-<!-- SECTION 4: YOUR ONLINE PRESENCE -->
+<!-- SECTION 6: YOUR ONLINE PRESENCE -->
 <div class="form-section">
   <div class="form-section-title">Your Online Presence</div>
   <div class="field">
@@ -253,6 +445,10 @@ body { font-family: 'Open Sans', sans-serif; background: var(--grey-50); color: 
       <option>No</option>
       <option>Not sure</option>
     </select>
+  </div>
+  <div class="field">
+    <label>Anything else we should know?</label>
+    <textarea id="anything_else" placeholder="Upcoming events, seasonal promotions, things you've tried that didn't work, anything relevant..."></textarea>
   </div>
 </div>
 
@@ -283,24 +479,48 @@ function submitForm(e) {
   btn.disabled = true;
   btn.textContent = 'Submitting...';
 
+  const val = (id) => { const el = document.getElementById(id); return el ? (el.value.trim() || null) : null; };
   const data = {
-    business_name: document.getElementById('business_name').value.trim(),
-    contact_name: document.getElementById('contact_name').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    phone: document.getElementById('phone').value.trim() || null,
-    clinic_type: document.getElementById('clinic_type').value,
-    website: document.getElementById('website').value.trim() || null,
-    num_practitioners: parseInt(document.getElementById('num_practitioners').value) || null,
-    booking_system: document.getElementById('booking_system').value,
-    how_handle_enquiries: document.getElementById('how_handle_enquiries').value.trim() || null,
-    monthly_leads: document.getElementById('monthly_leads').value || null,
-    biggest_frustration: document.getElementById('biggest_frustration').value.trim() || null,
-    lead_offer: document.getElementById('lead_offer').value.trim() || null,
-    running_ads: document.getElementById('running_ads').value || null,
-    ad_budget: document.getElementById('ad_budget').value || null,
-    facebook_url: document.getElementById('facebook_url').value.trim() || null,
-    instagram_handle: document.getElementById('instagram_handle').value.trim() || null,
-    google_business: document.getElementById('google_business').value || null
+    business_name: val('business_name'),
+    contact_name: val('contact_name'),
+    email: val('email'),
+    phone: val('phone'),
+    clinic_type: val('clinic_type'),
+    website: val('website'),
+    num_practitioners: parseInt(val('num_practitioners')) || null,
+    booking_system: val('booking_system'),
+    booking_system_name: val('booking_system_name'),
+    crm_system: val('crm_system'),
+    email_marketing: val('email_marketing'),
+    phone_system: val('phone_system'),
+    sms_platform: val('sms_platform'),
+    website_platform: val('website_platform'),
+    hosting_provider: val('hosting_provider'),
+    payment_processor: val('payment_processor'),
+    using_ai: val('using_ai'),
+    ai_tools: val('ai_tools'),
+    how_handle_enquiries: val('how_handle_enquiries'),
+    monthly_leads: val('monthly_leads'),
+    followup_process: val('followup_process'),
+    reminder_system: val('reminder_system'),
+    no_show_rate: val('no_show_rate'),
+    patient_comms: val('patient_comms'),
+    review_platform: val('review_platform'),
+    biggest_frustration: val('biggest_frustration'),
+    top_treatments: val('top_treatments'),
+    avg_treatment_value: val('avg_treatment_value'),
+    lead_offer: val('lead_offer'),
+    cancellation_policy: val('cancellation_policy'),
+    running_ads: val('running_ads'),
+    ad_budget: val('ad_budget'),
+    social_scheduler: val('social_scheduler'),
+    facebook_url: val('facebook_url'),
+    instagram_handle: val('instagram_handle'),
+    google_business: val('google_business'),
+    tech_comfort: val('tech_comfort'),
+    systems_person: val('systems_person'),
+    tech_wishlist: val('tech_wishlist'),
+    anything_else: val('anything_else')
   };
 
   // Save to Supabase
