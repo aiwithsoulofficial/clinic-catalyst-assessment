@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinic Catalyst - Sydney ABM Leads</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: #0A2A28;
+  --teal: #00D4BC;
+  --teal-mid: #00B4A0;
+  --teal-dark: #007A6E;
+  --teal-bg: rgba(0,212,188,0.06);
+  --teal-border: rgba(0,212,188,0.2);
+  --white: #FFFFFF;
+  --grey-50: #F8FAFA;
+  --grey-100: #EEF2F2;
+  --grey-200: #D5DEDE;
+  --grey-400: #8A9B9A;
+  --grey-600: #5A6D6C;
+  --red: #E84040;
+  --amber: #F5A623;
+  --green: #34C759;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Open Sans', sans-serif; background: var(--dark); color: var(--white); min-height: 100vh; }
+
+.header { background: var(--dark); padding: 24px 32px; border-bottom: 1px solid var(--teal-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.header-left { display: flex; align-items: center; gap: 16px; }
+.header-logo { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); }
+.header h1 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); }
+.header-stats { display: flex; gap: 16px; }
+.stat { text-align: center; padding: 8px 16px; background: rgba(0,212,188,0.08); border: 1px solid var(--teal-border); border-radius: 8px; }
+.stat-num { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: var(--teal); }
+.stat-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-400); margin-top: 2px; }
+
+.tabs { display: flex; gap: 4px; padding: 16px 32px 0; background: rgba(0,0,0,0.2); }
+.tab { padding: 10px 20px; background: transparent; border: none; color: var(--grey-400); font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: 1px; }
+.tab:hover { color: var(--white); }
+.tab.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+.container { padding: 24px 32px; }
+
+.actions { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.btn { padding: 8px 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; border-radius: 4px; }
+.btn-teal { background: var(--teal); color: var(--dark); }
+.btn-outline { background: transparent; border: 1px solid var(--teal-border); color: var(--teal); }
+.btn:hover { opacity: 0.85; }
+
+.lead-list { display: flex; flex-direction: column; gap: 8px; }
+.lead-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px 20px; cursor: pointer; transition: all 0.15s; display: grid; grid-template-columns: 1fr 1fr 120px 100px; gap: 16px; align-items: center; }
+.lead-card:hover { background: rgba(0,212,188,0.06); border-color: var(--teal-border); }
+.lead-name { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; }
+.lead-biz { font-size: 12px; color: var(--grey-400); margin-top: 2px; }
+.lead-email { font-size: 12px; color: var(--grey-400); }
+.lead-phone { font-size: 12px; color: var(--grey-400); }
+.lead-source { font-size: 10px; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+.status-badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.status-new { background: rgba(0,212,188,0.15); color: var(--teal); }
+.status-contacted { background: rgba(245,166,35,0.15); color: var(--amber); }
+.status-booked { background: rgba(91,141,239,0.15); color: #5B8DEF; }
+.status-closed { background: rgba(52,199,89,0.15); color: var(--green); }
+.status-lost { background: rgba(232,64,64,0.15); color: var(--red); }
+
+/* DETAIL PANEL */
+.detail-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; }
+.detail-overlay.open { display: flex; justify-content: flex-end; }
+.detail-panel { width: 600px; max-width: 100%; height: 100vh; background: var(--dark); border-left: 1px solid var(--teal-border); overflow-y: auto; padding: 32px; }
+.detail-close { background: none; border: none; color: var(--grey-400); font-size: 24px; cursor: pointer; float: right; }
+.detail-close:hover { color: var(--white); }
+.detail-name { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+.detail-biz { font-size: 14px; color: var(--teal); margin-bottom: 20px; }
+.detail-section { margin-bottom: 20px; }
+.detail-section-title { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--teal-dark); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--teal-border); }
+.detail-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.detail-label { color: var(--grey-400); }
+.detail-value { color: var(--white); font-weight: 500; text-align: right; max-width: 60%; }
+.detail-notes { width: 100%; min-height: 100px; padding: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--white); font-family: 'Open Sans', sans-serif; font-size: 13px; resize: vertical; outline: none; border-radius: 4px; }
+.detail-notes:focus { border-color: var(--teal); }
+.detail-status-select { padding: 8px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 12px; outline: none; cursor: pointer; border-radius: 4px; }
+.detail-status-select option { background: var(--dark); }
+.btn-save { margin-top: 12px; }
+
+/* ADD LEAD MODAL */
+.add-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; justify-content: center; align-items: center; }
+.add-modal.open { display: flex; }
+.add-form { background: var(--dark); border: 1px solid var(--teal-border); border-radius: 8px; padding: 32px; width: 500px; max-width: 90%; }
+.add-form h2 { font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--teal); margin-bottom: 20px; }
+.add-form input { width: 100%; padding: 10px; margin-bottom: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--white); font-size: 14px; font-family: inherit; outline: none; border-radius: 4px; }
+.add-form input:focus { border-color: var(--teal); }
+.add-form input::placeholder { color: var(--grey-400); }
+.add-btns { display: flex; gap: 12px; margin-top: 8px; }
+
+.empty { text-align: center; padding: 60px; color: var(--grey-400); }
+
+@media (max-width: 700px) {
+  .lead-card { grid-template-columns: 1fr; gap: 8px; }
+  .header { flex-direction: column; }
+  .detail-panel { width: 100%; }
+  .container { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div>
+      <div class="header-logo">Clinic Catalyst</div>
+      <h1>Sydney ABM Leads</h1>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="stat"><div class="stat-num" id="stat-total">0</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num" id="stat-new">0</div><div class="stat-label">New</div></div>
+    <div class="stat"><div class="stat-num" id="stat-contacted">0</div><div class="stat-label">Contacted</div></div>
+    <div class="stat"><div class="stat-num" id="stat-booked">0</div><div class="stat-label">Booked</div></div>
+    <div class="stat"><div class="stat-num" id="stat-closed">0</div><div class="stat-label">Closed</div></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('all')">All Leads</button>
+  <button class="tab" onclick="switchTab('assessment')">Assessment</button>
+  <button class="tab" onclick="switchTab('scoping')">Scoping</button>
+</div>
+
+<div class="container">
+  <div class="actions">
+    <button class="btn btn-teal" onclick="openAddModal()">+ Add Lead</button>
+    <button class="btn btn-outline" onclick="refreshData()">Refresh</button>
+  </div>
+  <div class="lead-list" id="lead-list">
+    <div class="empty">Loading leads...</div>
+  </div>
+</div>
+
+<!-- DETAIL PANEL -->
+<div class="detail-overlay" id="detail-overlay" onclick="closeDetail(event)">
+  <div class="detail-panel" id="detail-panel"></div>
+</div>
+
+<!-- ADD LEAD MODAL -->
+<div class="add-modal" id="add-modal" onclick="closeAddModal(event)">
+  <div class="add-form" onclick="event.stopPropagation()">
+    <h2>Add Lead Manually</h2>
+    <input type="text" id="add-name" placeholder="Contact name">
+    <input type="text" id="add-business" placeholder="Business name">
+    <input type="email" id="add-email" placeholder="Email">
+    <input type="tel" id="add-phone" placeholder="Phone">
+    <input type="text" id="add-type" placeholder="Clinic type (e.g. Aesthetics, Dental)">
+    <textarea id="add-notes" placeholder="Notes from conversation..." style="width:100%;min-height:60px;padding:10px;margin-bottom:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);font-size:14px;font-family:inherit;outline:none;border-radius:4px;resize:vertical;"></textarea>
+    <div class="add-btns">
+      <button class="btn btn-teal" onclick="addLead()">Add Lead</button>
+      <button class="btn btn-outline" onclick="document.getElementById('add-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://jiquevvzrdavgqonvvug.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4';
+
+const headers = {
+  'apikey': SUPABASE_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_KEY,
+  'Content-Type': 'application/json'
+};
+
+let allLeads = [];
+let currentTab = 'all';
+
+async function fetchLeads() {
+  const [assessmentRes, scopingRes] = await Promise.all([
+    fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_leads?select=*&order=created_at.desc', { headers }),
+    fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_scoping?select=*&order=created_at.desc', { headers })
+  ]);
+  const assessment = await assessmentRes.json();
+  const scoping = await scopingRes.json();
+
+  allLeads = [
+    ...assessment.map(l => ({ ...l, _source: 'assessment', _table: 'clinic_catalyst_leads' })),
+    ...scoping.map(l => ({
+      ...l,
+      name: l.contact_name,
+      business: l.business_name,
+      _source: 'scoping',
+      _table: 'clinic_catalyst_scoping'
+    }))
+  ];
+
+  // Sort by created_at desc
+  allLeads.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  renderLeads();
+  updateStats();
+}
+
+function renderLeads() {
+  const list = document.getElementById('lead-list');
+  let filtered = allLeads;
+  if (currentTab === 'assessment') filtered = allLeads.filter(l => l._source === 'assessment');
+  if (currentTab === 'scoping') filtered = allLeads.filter(l => l._source === 'scoping');
+
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="empty">No leads yet</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map((l, i) => {
+    const status = l.status || 'new';
+    return `
+      <div class="lead-card" onclick="openDetail(${allLeads.indexOf(l)})">
+        <div>
+          <div class="lead-name">${l.name || l.contact_name || 'Unknown'}</div>
+          <div class="lead-biz">${l.business || l.business_name || '-'}</div>
+        </div>
+        <div>
+          <div class="lead-email">${l.email || '-'}</div>
+          <div class="lead-phone">${l.phone || '-'}</div>
+        </div>
+        <div><span class="lead-source">${l._source}</span></div>
+        <div><span class="status-badge status-${status}">${status}</span></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateStats() {
+  const total = allLeads.length;
+  const counts = { new: 0, contacted: 0, booked: 0, closed: 0 };
+  allLeads.forEach(l => {
+    const s = l.status || 'new';
+    if (counts[s] !== undefined) counts[s]++;
+  });
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-new').textContent = counts.new;
+  document.getElementById('stat-contacted').textContent = counts.contacted;
+  document.getElementById('stat-booked').textContent = counts.booked;
+  document.getElementById('stat-closed').textContent = counts.closed;
+}
+
+function openDetail(idx) {
+  const l = allLeads[idx];
+  const panel = document.getElementById('detail-panel');
+
+  // Build detail rows based on source
+  let rows = '';
+  const r = (label, value) => value ? `<div class="detail-row"><span class="detail-label">${label}</span><span class="detail-value">${value}</span></div>` : '';
+
+  rows += r('Email', l.email);
+  rows += r('Phone', l.phone);
+  rows += r('Clinic Type', l.clinic_type);
+  rows += r('Website', l.website);
+  rows += r('Practitioners', l.num_practitioners);
+
+  if (l._source === 'scoping') {
+    rows += r('Booking System', l.booking_system);
+    rows += r('Booking System (other)', l.booking_system_name);
+    rows += r('CRM', l.crm_system);
+    rows += r('Email Marketing', l.email_marketing);
+    rows += r('Phone System', l.phone_system);
+    rows += r('SMS Platform', l.sms_platform);
+    rows += r('Website Platform', l.website_platform);
+    rows += r('Hosting', l.hosting_provider);
+    rows += r('Payment Processor', l.payment_processor);
+    rows += r('Using AI', l.using_ai);
+    rows += r('AI Tools', l.ai_tools);
+    rows += r('Tech Comfort', l.tech_comfort);
+    rows += r('Systems Person', l.systems_person);
+    rows += r('Tech Wishlist', l.tech_wishlist);
+    rows += r('Enquiry Handling', l.how_handle_enquiries);
+    rows += r('Monthly Leads', l.monthly_leads);
+    rows += r('Follow-up Process', l.followup_process);
+    rows += r('Reminder System', l.reminder_system);
+    rows += r('No-show Rate', l.no_show_rate);
+    rows += r('Patient Comms', l.patient_comms);
+    rows += r('Review Platform', l.review_platform);
+    rows += r('Top Treatments', l.top_treatments);
+    rows += r('Avg Treatment Value', l.avg_treatment_value);
+    rows += r('Lead Offer', l.lead_offer);
+    rows += r('Cancellation Policy', l.cancellation_policy);
+    rows += r('Running Ads', l.running_ads);
+    rows += r('Ad Budget', l.ad_budget);
+    rows += r('Social Scheduler', l.social_scheduler);
+    rows += r('Facebook', l.facebook_url);
+    rows += r('Instagram', l.instagram_handle);
+    rows += r('Google Business', l.google_business);
+    rows += r('Anything Else', l.anything_else);
+  }
+
+  if (l._source === 'assessment') {
+    rows += r('Lead Response Score', l.score_lead_response + ' / 5');
+    rows += r('Follow-up Score', l.score_followup + ' / 5');
+    rows += r('Booking Score', l.score_booking + ' / 5');
+    rows += r('Drop-off Score', l.score_dropoff + ' / 5');
+    rows += r('Tracking Score', l.score_tracking + ' / 5');
+    rows += r('Retention Score', l.score_retention + ' / 5');
+    rows += r('Total Score', l.total_score + ' / 30');
+  }
+
+  rows += r('Biggest Frustration', l.biggest_frustration);
+  rows += r('Source', l._source);
+  rows += r('Submitted', new Date(l.created_at).toLocaleString('en-AU'));
+
+  panel.innerHTML = `
+    <button class="detail-close" onclick="document.getElementById('detail-overlay').classList.remove('open')">&times;</button>
+    <div class="detail-name">${l.name || l.contact_name || 'Unknown'}</div>
+    <div class="detail-biz">${l.business || l.business_name || '-'}</div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Status</div>
+      <select class="detail-status-select" id="detail-status" onchange="updateLead(${idx}, 'status', this.value)">
+        <option value="new" ${(l.status||'new')==='new'?'selected':''}>New</option>
+        <option value="contacted" ${l.status==='contacted'?'selected':''}>Contacted</option>
+        <option value="booked" ${l.status==='booked'?'selected':''}>Booked</option>
+        <option value="closed" ${l.status==='closed'?'selected':''}>Closed</option>
+        <option value="lost" ${l.status==='lost'?'selected':''}>Lost</option>
+      </select>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Details</div>
+      ${rows}
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Notes</div>
+      <textarea class="detail-notes" id="detail-notes" placeholder="Add notes...">${l.notes || ''}</textarea>
+      <button class="btn btn-teal btn-save" onclick="updateLead(${idx}, 'notes', document.getElementById('detail-notes').value)">Save Notes</button>
+    </div>
+  `;
+
+  document.getElementById('detail-overlay').classList.add('open');
+}
+
+function closeDetail(e) {
+  if (e.target === document.getElementById('detail-overlay')) {
+    document.getElementById('detail-overlay').classList.remove('open');
+  }
+}
+
+async function updateLead(idx, field, value) {
+  const l = allLeads[idx];
+  const table = l._table;
+  const id = l.id;
+
+  await fetch(SUPABASE_URL + '/rest/v1/' + table + '?id=eq.' + id, {
+    method: 'PATCH',
+    headers: { ...headers, 'Prefer': 'return=minimal' },
+    body: JSON.stringify({ [field]: value })
+  });
+
+  l[field] = value;
+  renderLeads();
+  updateStats();
+
+  if (field === 'notes') {
+    const btn = document.querySelector('.btn-save');
+    btn.textContent = 'Saved!';
+    setTimeout(() => btn.textContent = 'Save Notes', 1500);
+  }
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  renderLeads();
+}
+
+function openAddModal() { document.getElementById('add-modal').classList.add('open'); }
+function closeAddModal(e) { if (e.target === document.getElementById('add-modal')) document.getElementById('add-modal').classList.remove('open'); }
+
+async function addLead() {
+  const data = {
+    contact_name: document.getElementById('add-name').value.trim(),
+    business_name: document.getElementById('add-business').value.trim(),
+    email: document.getElementById('add-email').value.trim(),
+    phone: document.getElementById('add-phone').value.trim() || null,
+    clinic_type: document.getElementById('add-type').value.trim() || null,
+    notes: document.getElementById('add-notes').value.trim() || null,
+    status: 'new'
+  };
+
+  if (!data.contact_name) { alert('Name required'); return; }
+
+  await fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_scoping', {
+    method: 'POST',
+    headers: { ...headers, 'Prefer': 'return=minimal' },
+    body: JSON.stringify(data)
+  });
+
+  document.getElementById('add-modal').classList.remove('open');
+  document.getElementById('add-name').value = '';
+  document.getElementById('add-business').value = '';
+  document.getElementById('add-email').value = '';
+  document.getElementById('add-phone').value = '';
+  document.getElementById('add-type').value = '';
+  document.getElementById('add-notes').value = '';
+  await fetchLeads();
+}
+
+function refreshData() { fetchLeads(); }
+
+// Init
+fetchLeads();
+</script>
+
+</body>
+</html>
