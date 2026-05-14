@@ -10,7 +10,11 @@ services:
       - key: ELEVENLABS_AGENT_ID
         value: agent_6001kpa99tm7fm5sk5da7h057s3r
       - key: ELEVENLABS_PHONE_ID
-        value: phnum_3501kpvsp97afx0sy9d0pnzhqwnk
+        sync: false
+      - key: SMTP_USER
+        value: aiwithsoulofficial@gmail.com
+      - key: SMTP_PASS
+        sync: false
     headers:
       - path: /*
         name: X-Frame-Options

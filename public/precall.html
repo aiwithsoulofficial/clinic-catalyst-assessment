@@ -299,9 +299,6 @@
 </div>
 
 <script>
-  const SUPABASE_URL = 'https://jiquevvzrdavgqonvvug.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4';
-
   function submitAssessment() {
     const business = document.getElementById('f-business').value.trim();
     if (!business) {
@@ -310,33 +307,24 @@
     }
 
     const data = {
-      name: business,
-      email: null,
-      phone: null,
       business: business,
-      source: 'precall-assessment',
-      score_lead_response: 0,
-      score_followup: 0,
-      score_booking: 0,
-      score_dropoff: 0,
-      score_tracking: 0,
-      score_retention: 0,
-      total_score: 0
+      website: document.getElementById('f-website').value.trim(),
+      social: document.getElementById('f-social').value.trim(),
+      ads: document.getElementById('f-ads').value,
+      adspend: document.getElementById('f-adspend').value.trim(),
+      booking: document.getElementById('f-booking').value.trim(),
+      crm: document.getElementById('f-crm').value.trim(),
+      ai: document.getElementById('f-ai').value.trim(),
+      hate: document.getElementById('f-hate').value.trim(),
+      love: document.getElementById('f-love').value.trim()
     };
 
-    // Save to Supabase
-    fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_leads', {
+    fetch('/api/precall', {
       method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     }).catch(() => {});
 
-    // Show success
     document.getElementById('form-area').style.display = 'none';
     document.getElementById('success-area').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
