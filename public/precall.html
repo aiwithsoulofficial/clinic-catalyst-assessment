@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Call Assessment - Clinic Catalyst</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-dark: #0A2A28;
+    --bg-darker: #061E1C;
+    --accent: #00D4BC;
+    --accent2: #00B4A0;
+    --white: #FFFFFF;
+    --white-90: rgba(255,255,255,0.9);
+    --white-80: rgba(255,255,255,0.8);
+    --white-60: rgba(255,255,255,0.6);
+    --white-40: rgba(255,255,255,0.4);
+    --white-20: rgba(255,255,255,0.2);
+    --white-10: rgba(255,255,255,0.1);
+    --white-05: rgba(255,255,255,0.05);
+    --accent-soft: rgba(0,212,188,0.08);
+    --accent-med: rgba(0,212,188,0.15);
+  }
+
+  html { background: #000; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--white);
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--bg-dark);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, .brand-tag, .section-label { font-family: 'Montserrat', sans-serif; }
+
+  /* ---- HEADER ---- */
+  .header {
+    text-align: center;
+    padding: 48px 32px 40px;
+    background: linear-gradient(160deg, #0A2A28 0%, #061E1C 60%, #0A2A28 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,212,188,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  .header > * { position: relative; z-index: 1; }
+
+  .brand-tag {
+    display: inline-block;
+    padding: 8px 24px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    background: var(--accent-soft);
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .header h1 span { color: var(--accent); }
+
+  .header p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--white-60);
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ---- FORM ---- */
+  .form-body { padding: 32px; }
+
+  .section-label {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    margin-bottom: 16px;
+    margin-top: 28px;
+  }
+
+  .section-label:first-child { margin-top: 0; }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  .field label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--white-90);
+    margin-bottom: 6px;
+  }
+
+  .field .hint {
+    font-size: 12px;
+    color: var(--white-40);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .field input, .field textarea, .field select {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--white-05);
+    border: 1px solid var(--white-20);
+    color: var(--white);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .field input::placeholder, .field textarea::placeholder { color: var(--white-40); }
+  .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--accent); }
+  .field textarea { min-height: 90px; resize: vertical; }
+  .field select { cursor: pointer; }
+  .field select option { background: var(--bg-dark); color: var(--white); }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background: var(--accent);
+    color: var(--bg-dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 32px;
+  }
+
+  .submit-btn:hover { background: var(--accent2); }
+
+  .fine-print {
+    font-size: 12px;
+    color: var(--white-40);
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  /* ---- SUCCESS ---- */
+  .success {
+    display: none;
+    text-align: center;
+    padding: 60px 32px;
+  }
+
+  .success h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .success p {
+    font-size: 16px;
+    color: var(--white-80);
+    line-height: 1.7;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 600px) {
+    .header { padding: 32px 20px; }
+    .header h1 { font-size: 22px; }
+    .form-body { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand-tag">Clinic Catalyst</div>
+  <h1>Quick <span>Pre-Call Assessment</span></h1>
+  <p>Help us make the most of your 30 minutes. Fill this in before our session so we can come prepared with recommendations specific to your business.</p>
+</div>
+
+<div class="form-body" id="form-area">
+
+  <div class="section-label">Your Business</div>
+
+  <div class="field">
+    <label>Business name</label>
+    <input type="text" id="f-business" placeholder="e.g. Glow Skin Clinic">
+  </div>
+
+  <div class="field">
+    <label>Website</label>
+    <input type="url" id="f-website" placeholder="e.g. www.yoursite.com.au">
+  </div>
+
+  <div class="field">
+    <label>Main social media handle</label>
+    <div class="hint">Instagram, Facebook, or whichever you use most</div>
+    <input type="text" id="f-social" placeholder="e.g. @glowskinclinic">
+  </div>
+
+  <div class="section-label">Marketing & Ads</div>
+
+  <div class="field">
+    <label>Are you currently running ads?</label>
+    <select id="f-ads">
+      <option value="">Select one</option>
+      <option value="yes-facebook">Yes - Facebook / Instagram</option>
+      <option value="yes-google">Yes - Google</option>
+      <option value="yes-both">Yes - Both</option>
+      <option value="yes-other">Yes - Other</option>
+      <option value="no-previously">No - but I have before</option>
+      <option value="no-never">No - never have</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>Monthly ad spend (approx)</label>
+    <input type="text" id="f-adspend" placeholder="e.g. $1,500/month or N/A">
+  </div>
+
+  <div class="section-label">Systems & Tools</div>
+
+  <div class="field">
+    <label>What booking system do you use?</label>
+    <input type="text" id="f-booking" placeholder="e.g. Cliniko, Timely, Fresha, pen and paper">
+  </div>
+
+  <div class="field">
+    <label>What CRM do you use (if any)?</label>
+    <div class="hint">Where you track leads, clients, follow-ups</div>
+    <input type="text" id="f-crm" placeholder="e.g. Mailchimp, HubSpot, spreadsheet, nothing">
+  </div>
+
+  <div class="field">
+    <label>Are you using any AI tools right now?</label>
+    <div class="hint">Chatbots, AI receptionist, automated follow-ups, ChatGPT, etc.</div>
+    <input type="text" id="f-ai" placeholder="e.g. ChatGPT for captions, nothing else">
+  </div>
+
+  <div class="section-label">The Real Stuff</div>
+
+  <div class="field">
+    <label>What parts of running your business do you HATE?</label>
+    <div class="hint">The things that drain your energy and eat your time</div>
+    <textarea id="f-hate" placeholder="e.g. Chasing leads, following up no-shows, posting on social media, admin..."></textarea>
+  </div>
+
+  <div class="field">
+    <label>What parts do you LOVE?</label>
+    <div class="hint">The things you'd do all day if you could</div>
+    <textarea id="f-love" placeholder="e.g. Treating clients, seeing results, building relationships..."></textarea>
+  </div>
+
+  <button class="submit-btn" onclick="submitAssessment()">Submit Assessment</button>
+  <p class="fine-print">This helps us tailor your session. Everything stays between us.</p>
+</div>
+
+<div class="success" id="success-area">
+  <h2>All done.</h2>
+  <p>We've got everything we need. We'll review your business before our session so we can hit the ground running. See you soon.</p>
+  <p style="margin-top: 24px; font-size: 14px; color: var(--white-40);">Alicia & Kelly</p>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://jiquevvzrdavgqonvvug.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4';
+
+  function submitAssessment() {
+    const business = document.getElementById('f-business').value.trim();
+    if (!business) {
+      alert('Please enter your business name.');
+      return;
+    }
+
+    const data = {
+      name: business,
+      email: null,
+      phone: null,
+      business: business,
+      source: 'precall-assessment',
+      score_lead_response: 0,
+      score_followup: 0,
+      score_booking: 0,
+      score_dropoff: 0,
+      score_tracking: 0,
+      score_retention: 0,
+      total_score: 0
+    };
+
+    // Save to Supabase
+    fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_leads', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    }).catch(() => {});
+
+    // Show success
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('success-area').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
