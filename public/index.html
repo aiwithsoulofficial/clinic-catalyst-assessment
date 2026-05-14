@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revenue Leak Assessment - Clinic Catalyst</title>
+<title>Free Clinic Review - Clinic Catalyst</title>
+<meta name="description" content="Get your creative, copy, ads, strategy and systems reviewed by two specialists who actually fill clinics. Real recommendations you can use today.">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -14,6 +15,7 @@
     --bg-darker: #061E1C;
     --accent: #00D4BC;
     --accent2: #00B4A0;
+    --accent-dark: #007A6E;
     --white: #FFFFFF;
     --white-90: rgba(255,255,255,0.9);
     --white-80: rgba(255,255,255,0.8);
@@ -28,115 +30,110 @@
     --accent-med: rgba(0,212,188,0.15);
   }
 
-  html { background: #000; }
+  html { background: #000; scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: var(--white);
     max-width: 800px;
     margin: 0 auto;
     background: var(--bg-dark);
   }
 
-  @media print {
-    html, body { background: var(--bg-dark); }
-    .no-print { display: none !important; }
-    .page-break { page-break-before: always; }
-    body { max-width: 100%; }
+  h1, h2, h3, h4, .brand-tag, .section-tag {
+    font-family: 'Montserrat', sans-serif;
   }
 
-  /* ─── COVER ─── */
-  .cover {
+  /* ---- DOT GRID ---- */
+  .dot-grid {
+    position: relative;
+  }
+  .dot-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,212,188,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 80px 60px;
+    padding: 60px 32px;
     position: relative;
     overflow: hidden;
     background: linear-gradient(160deg, #0A2A28 0%, #061E1C 60%, #0A2A28 100%);
   }
 
-  .cover::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(0,212,188,0.06) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
+  .hero-content { position: relative; z-index: 1; max-width: 640px; }
 
-  .cover-content { position: relative; z-index: 1; }
-
-  .cover .brand-tag {
-    display: block;
-    width: 100%;
-    padding: 12px 28px;
-    border: none;
-    background: #e7413f;
-    font-size: 13px;
+  .brand-tag {
+    display: inline-block;
+    padding: 10px 28px;
+    font-size: 12px;
     font-weight: 800;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 48px;
-    text-align: center;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    background: var(--accent-soft);
+    margin-bottom: 40px;
   }
 
-  .cover h1 {
-    font-size: 42px;
+  .hero h1 {
+    font-size: 38px;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1px;
     line-height: 1.15;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
-  .cover .subtitle {
+  .hero h1 span { color: var(--accent); }
+
+  .hero .subtitle {
     font-size: 18px;
     font-weight: 300;
     color: var(--white-80);
-    max-width: 520px;
-    margin: 0 auto 48px;
     line-height: 1.7;
+    margin-bottom: 40px;
   }
 
-  .cover .red-callout {
-    background: var(--red-soft);
-    border: 1px solid rgba(232,64,64,0.3);
-    padding: 20px 36px;
-    margin-bottom: 48px;
-    max-width: 520px;
+  .hero-cta {
+    display: inline-block;
+    padding: 18px 48px;
+    background: var(--accent);
+    color: var(--bg-dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+    cursor: pointer;
+    border: none;
   }
 
-  .cover .red-callout p {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--red);
+  .hero-cta:hover { background: var(--accent2); }
+
+  .hero-note {
+    font-size: 13px;
+    color: var(--white-40);
+    margin-top: 16px;
   }
 
-  .cover .authors {
-    font-size: 14px;
-    color: var(--white-60);
-    margin-top: 24px;
-    letter-spacing: 1px;
-  }
-
-  /* ─── SECTIONS ─── */
+  /* ---- SECTIONS ---- */
   .section {
-    padding: 60px;
+    padding: 60px 32px;
     border-top: 1px solid var(--white-10);
     position: relative;
-  }
-
-  .section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(0,212,188,0.04) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
   }
 
   .section > * { position: relative; z-index: 1; }
@@ -153,11 +150,6 @@
     margin-bottom: 16px;
   }
 
-  .section-tag.red {
-    border-color: var(--red);
-    color: var(--red);
-  }
-
   h2 {
     font-size: 28px;
     font-weight: 800;
@@ -167,14 +159,7 @@
     margin-bottom: 8px;
   }
 
-  h3 {
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-    color: var(--accent);
-  }
+  h2 span { color: var(--accent); }
 
   .divider {
     width: 60px;
@@ -186,1076 +171,404 @@
   p { font-weight: 300; line-height: 1.7; color: var(--white-80); font-size: 15px; }
   p + p { margin-top: 12px; }
 
-  /* ─── INTRO BOX ─── */
-  .intro-box {
-    background: var(--accent-soft);
-    border-left: 3px solid var(--accent);
-    padding: 24px 28px;
-    margin: 24px 0;
-  }
-
-  .intro-box p { font-size: 15px; color: var(--white-80); }
-
-  /* ─── ASSESSMENT QUESTIONS ─── */
-  .assessment-block {
-    margin: 32px 0;
-  }
-
-  .assessment-header {
-    display: flex;
-    align-items: center;
+  /* ---- REVIEW AREAS ---- */
+  .review-grid {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 16px;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--white-10);
+    margin-top: 28px;
   }
 
-  .assessment-num {
-    width: 44px;
-    height: 44px;
+  .review-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    border: 1px solid var(--white-20);
+    background: var(--white-05);
+  }
+
+  .review-icon {
+    width: 48px;
+    height: 48px;
     background: var(--accent-med);
     border: 1px solid var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    font-size: 20px;
-    color: var(--accent);
+    font-size: 22px;
     flex-shrink: 0;
   }
 
-  .assessment-title {
-    font-size: 20px;
+  .review-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: var(--white);
+    margin-bottom: 6px;
   }
 
-  .question {
-    display: flex;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--white-05);
-    align-items: flex-start;
-  }
-
-  .question:last-child { border-bottom: none; }
-
-  .checkbox {
-    width: 24px;
-    height: 24px;
-    border: 2px solid var(--white-40);
-    flex-shrink: 0;
-    margin-top: 2px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-
-  .checkbox.checked {
-    background: var(--red);
-    border-color: var(--red);
-  }
-
-  .checkbox.checked::after {
-    content: '\2717';
-    color: white;
+  .review-card p {
     font-size: 14px;
-    font-weight: 700;
-  }
-
-  .question-text {
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--white-90);
-    line-height: 1.5;
-  }
-
-  .question-subtext {
-    font-size: 13px;
-    color: var(--white-40);
-    margin-top: 4px;
-    font-style: italic;
-  }
-
-  /* ─── SCORE BOX ─── */
-  .score-box {
-    background: var(--white-05);
-    border: 1px solid var(--white-20);
-    padding: 20px 24px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .score-label {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     color: var(--white-60);
+    line-height: 1.6;
   }
 
-  .score-value {
-    font-size: 24px;
-    font-weight: 900;
-    color: var(--accent);
-  }
-
-  .score-input {
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid var(--accent);
-    color: var(--accent);
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    font-weight: 900;
-    width: 60px;
-    text-align: center;
-    outline: none;
-  }
-
-  /* ─── SOLUTION CARDS ─── */
-  .solution-grid {
+  /* ---- OUTCOME STRIP ---- */
+  .outcome-strip {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-top: 24px;
+    margin-top: 28px;
   }
 
-  @media (max-width: 700px) {
-    .solution-grid { grid-template-columns: 1fr; }
-    #pkg-cards { grid-template-columns: 1fr !important; }
+  @media (max-width: 600px) {
+    .outcome-strip { grid-template-columns: 1fr; }
   }
 
-  .solution-card {
-    padding: 24px;
-    border: 1px solid var(--white-20);
-    background: var(--white-05);
-  }
-
-  .solution-card.marketing {
-    border-color: var(--accent2);
-    border-top: 3px solid var(--accent2);
-  }
-
-  .solution-card.ai {
-    border-color: var(--accent);
-    border-top: 3px solid var(--accent);
-  }
-
-  .solution-card h4 {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 14px;
-  }
-
-  .solution-card.marketing h4 { color: var(--accent2); }
-  .solution-card.ai h4 { color: var(--accent); }
-
-  .solution-card ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .solution-card li {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--white-80);
-    padding: 6px 0 6px 18px;
-    position: relative;
-    line-height: 1.5;
-  }
-
-  .solution-card.marketing li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 12px;
-    width: 6px;
-    height: 6px;
-    background: var(--accent2);
-  }
-
-  .solution-card.ai li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 12px;
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-  }
-
-  /* ─── RESULTS ─── */
-  .result-tier {
-    padding: 24px;
-    margin-bottom: 16px;
-    border: 1px solid var(--white-20);
-    background: var(--white-05);
-  }
-
-  .result-tier.critical {
-    border-color: var(--red);
-    border-left: 4px solid var(--red);
-    background: var(--red-soft);
-  }
-
-  .result-tier.warning {
-    border-color: #F5A623;
-    border-left: 4px solid #F5A623;
-    background: rgba(245,166,35,0.08);
-  }
-
-  .result-tier.good {
-    border-color: var(--accent);
-    border-left: 4px solid var(--accent);
+  .outcome-box {
+    padding: 28px;
+    border: 2px solid var(--accent);
     background: var(--accent-soft);
+    text-align: center;
   }
 
-  .result-range {
-    font-size: 28px;
+  .outcome-box .big {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
     font-weight: 900;
-    margin-bottom: 4px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
   }
 
-  .result-tier.critical .result-range { color: var(--red); }
-  .result-tier.warning .result-range { color: #F5A623; }
-  .result-tier.good .result-range { color: var(--accent); }
-
-  .result-label {
+  .outcome-box p {
     font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+    color: var(--white-80);
+    text-align: center;
   }
 
-  .result-tier.critical .result-label { color: var(--red); }
-  .result-tier.warning .result-label { color: #F5A623; }
-  .result-tier.good .result-label { color: var(--accent); }
-
-  /* ─── COST CALCULATOR ─── */
-  .calc-row {
+  /* ---- HOW IT WORKS ---- */
+  .step-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 0;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px 0;
     border-bottom: 1px solid var(--white-10);
   }
 
-  .calc-row:last-child { border-bottom: none; }
+  .step-row:last-child { border-bottom: none; }
 
-  .calc-label { font-size: 14px; font-weight: 400; color: var(--white-80); }
-
-  .calc-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--white-40);
-    color: var(--white);
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    width: 120px;
-    text-align: right;
-    outline: none;
-    padding: 4px 0;
-  }
-
-  .calc-input:focus {
-    border-color: var(--accent);
-  }
-
-  .calc-total {
-    background: var(--accent-med);
-    border: 1px solid var(--accent);
-    padding: 20px 24px;
-    margin-top: 20px;
+  .step-num {
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--bg-dark);
+    flex-shrink: 0;
   }
 
-  .calc-total-label {
+  .step-row h3 {
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent);
+    color: var(--white);
+    margin-bottom: 4px;
   }
 
-  .calc-total-value {
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--accent);
+  .step-row p {
+    font-size: 14px;
+    color: var(--white-60);
   }
 
-  /* ─── CTA ─── */
-  .cta-section {
+  /* ---- PHOTO + CREDIBILITY ---- */
+  .about-row {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin-top: 28px;
+  }
+
+  @media (max-width: 600px) {
+    .about-row { flex-direction: column; text-align: center; }
+  }
+
+  .about-photo {
+    width: 220px;
+    height: 280px;
+    object-fit: cover;
+    object-position: center top;
+    flex-shrink: 0;
+    border: 2px solid var(--white-20);
+  }
+
+  .about-text p {
+    font-size: 14px;
+    color: var(--white-60);
+    line-height: 1.7;
+  }
+
+  .about-text strong { color: var(--white-90); }
+
+  /* ---- FORM ---- */
+  .form-section {
     background: linear-gradient(160deg, #0A2A28 0%, #061E1C 100%);
-    padding: 60px;
-    text-align: center;
     border-top: 3px solid var(--accent);
+    padding: 60px 32px;
+    text-align: center;
   }
 
-  .cta-button {
-    display: inline-block;
-    padding: 16px 48px;
+  .form-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .form-wrap input, .form-wrap select {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    background: var(--white-05);
+    border: 1px solid var(--white-20);
+    color: var(--white);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-wrap input::placeholder { color: var(--white-40); }
+
+  .form-wrap input:focus { border-color: var(--accent); }
+
+  .form-btn {
+    display: block;
+    width: 100%;
+    padding: 18px;
     background: var(--accent);
     color: var(--bg-dark);
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-decoration: none;
-    margin-top: 24px;
-    transition: background 0.2s;
-  }
-
-  .cta-button:hover { background: var(--accent2); }
-
-  /* ─── DOWNLOAD BAR ─── */
-  .download-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(6,30,28,0.97);
-    border-top: 1px solid var(--white-20);
-    padding: 12px 24px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    z-index: 100;
-  }
-
-  .download-bar button {
-    background: var(--accent);
     border: none;
-    color: var(--bg-dark);
-    padding: 10px 28px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    transition: background 0.2s;
+    margin-top: 4px;
   }
 
-  .download-bar button:hover { background: var(--accent2); }
+  .form-btn:hover { background: var(--accent2); }
 
-  .download-bar button.secondary {
-    background: transparent;
-    border: 1px solid var(--white-40);
-    color: var(--white);
+  .form-fine {
+    font-size: 12px;
+    color: var(--white-40);
+    text-align: center;
+    margin-top: 12px;
   }
 
-  /* ─── LEAK HIGHLIGHT ─── */
-  .leak-highlight {
+  /* ---- URGENCY ---- */
+  .urgency-bar {
     background: var(--red-soft);
-    border-left: 3px solid var(--red);
-    padding: 16px 20px;
-    margin: 16px 0;
+    border: 1px solid rgba(232,64,64,0.3);
+    padding: 16px 24px;
+    text-align: center;
+    margin-bottom: 32px;
   }
 
-  .leak-highlight p {
-    color: var(--white-90);
+  .urgency-bar p {
     font-size: 15px;
-    font-weight: 500;
-  }
-
-  .leak-highlight .cost {
+    font-weight: 600;
     color: var(--red);
-    font-weight: 800;
-    font-size: 17px;
   }
 
-  /* Fix print colours */
-  @media print {
-    body, .cover, .section, .cta-section {
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
+  /* ---- SUCCESS STATE ---- */
+  .success-msg {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .success-msg h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .success-msg p {
+    font-size: 16px;
+    color: var(--white-80);
+    margin-bottom: 24px;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px; }
+    .hero h1 { font-size: 28px; }
+    .hero .subtitle { font-size: 16px; }
+    .section { padding: 40px 20px; }
+    h2 { font-size: 22px; }
+    .form-section { padding: 40px 20px; }
+    .about-photo { width: 140px; height: 170px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ═══════ COVER ═══════ -->
-<div class="cover">
-  <div class="cover-content">
+<!-- ====== HERO ====== -->
+<div class="hero dot-grid">
+  <div class="hero-content">
     <div class="brand-tag">Clinic Catalyst</div>
-    <h1>Revenue Leak<br>Assessment</h1>
-    <div style="width: 60px; height: 3px; background: var(--accent); margin: 20px auto 28px;"></div>
-    <p class="subtitle">Find the hidden leaks costing your clinic $20K - $100K per year - and get the exact fixes to plug them.</p>
-    <div class="red-callout">
-      <p>You don't need more leads. You need to stop losing the ones you already have.</p>
-    </div>
-    <p style="font-size: 14px; color: var(--white-60); font-weight: 400; margin-bottom: 4px;">Tick every box that applies to your clinic.</p>
-    <p style="font-size: 14px; color: var(--white-60); font-weight: 400;">The more you tick, the more revenue you're leaving on the table.</p>
-    <p class="authors">By Alicia Hagen &amp; Kelly Wotherspoon</p>
+    <h1>We'll Review Your<br><span>Entire Business</span><br>For Free</h1>
+    <p class="subtitle">Your creative. Your copy. Your ads. Your strategy. Your systems. Two specialists who actually fill clinics will look at everything and give you real recommendations you can implement <em>this week</em> to get back your time and make more money.</p>
+    <a href="https://api.leadconnectorhq.com/widget/bookings/adsmarketingsystems" target="_blank" class="hero-cta" style="text-decoration: none;">Book Your Free Review</a>
+    <p class="hero-note">Takes 30 seconds to book. Zero obligation.</p>
   </div>
 </div>
 
-<!-- ═══════ HOW TO USE ═══════ -->
-<div class="section">
-  <div class="section-tag">How This Works</div>
-  <h2>3 STEPS TO FIND YOUR LEAKS</h2>
+<!-- ====== WHAT WE REVIEW ====== -->
+<div class="section dot-grid">
+  <div class="section-tag">What We Look At</div>
+  <h2>Five Areas. <span>Real Answers.</span></h2>
   <div class="divider"></div>
-  <div class="intro-box">
-    <p><strong style="color: var(--accent);">Step 1:</strong> We work with you to create offers that support your clinic and design creatives that attract the right clients - not just volume.</p>
-  </div>
-  <div class="intro-box">
-    <p><strong style="color: var(--accent);">Step 2:</strong> Count your total ticks and check your score against the results guide. Each tick represents revenue walking out of your clinic.</p>
-  </div>
-  <div class="intro-box">
-    <p><strong style="color: var(--accent);">Step 3:</strong> Read the fix for each area - we've included both the marketing solution and the AI-powered solution so you can choose your path.</p>
-  </div>
-</div>
+  <p>We don't send you a generic PDF. We look at your actual business and tell you exactly what's working, what's leaking money, and what to fix first.</p>
 
-<!-- ═══════ ASSESSMENT 1: LEAD RESPONSE ═══════ -->
-<div class="section page-break">
-  <div class="section-tag red">Assessment Area</div>
-  <div class="assessment-block">
-    <div class="assessment-header">
-      <div class="assessment-num">1</div>
-      <div class="assessment-title">LEAD RESPONSE SPEED</div>
-    </div>
-
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">It takes more than 30 minutes to respond to a new enquiry during business hours</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Enquiries that come in after 5pm don't get a response until the next morning</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Weekend or public holiday leads sit untouched until Monday</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You rely on one person to check and respond to new leads</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Facebook and Instagram DMs sometimes go unread for hours or days</div></div></div>
-
-    <div class="leak-highlight">
-      <p>A lead at 7pm that you see at 9am has already booked with a competitor at 7:05pm.</p>
-      <p class="cost">Estimated annual cost: $15,000 - $40,000</p>
-    </div>
-
-    <div class="score-box">
-      <span class="score-label">Your score for this section</span>
-      <span class="score-value" id="score1">0 / 5</span>
-    </div>
-  </div>
-
-  <h3>THE FIX</h3>
-  <div class="solution-grid">
-    <div class="solution-card marketing">
-      <h4>Marketing Fix</h4>
-      <ul>
-        <li>Set a 5-minute response SLA for your team during business hours</li>
-        <li>Create templated responses for your most common enquiry types so replies are fast and consistent</li>
-        <li>Assign a dedicated person to check DMs and enquiry forms at set intervals</li>
-        <li>Set up mobile notifications for every new lead across all platforms</li>
-      </ul>
-    </div>
-    <div class="solution-card ai">
-      <h4>AI-Powered Fix</h4>
-      <ul>
-        <li>Deploy an AI responder that replies to every enquiry within 60 seconds - 24/7, including after hours and weekends</li>
-        <li>AI answers FAQs, qualifies the lead, and books them directly into your calendar</li>
-        <li>Covers Facebook DMs, Instagram DMs, website chat, and SMS simultaneously</li>
-        <li>AI can call leads back instantly with a natural-sounding voice conversation</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ ASSESSMENT 2: FOLLOW-UP ═══════ -->
-<div class="section page-break">
-  <div class="section-tag red">Assessment Area</div>
-  <div class="assessment-block">
-    <div class="assessment-header">
-      <div class="assessment-num">2</div>
-      <div class="assessment-title">FOLLOW-UP &amp; NURTURE</div>
-    </div>
-
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">If a lead doesn't book on the first contact, they get one follow-up at most</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You don't have a structured follow-up sequence (call, SMS, email over multiple days)</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Old leads from 30+ days ago are never re-contacted</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You don't send before-and-after images to leads who enquired but didn't book</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Your team doesn't call new leads - they only text or email</div></div></div>
-
-    <div class="leak-highlight">
-      <p>Conversion requires 6 - 12 touches. Most clinics send one. Every lead that goes cold is ad spend you've already paid for - wasted.</p>
-      <p class="cost">Estimated annual cost: $10,000 - $30,000</p>
-    </div>
-
-    <div class="score-box">
-      <span class="score-label">Your score for this section</span>
-      <span class="score-value" id="score2">0 / 5</span>
-    </div>
-  </div>
-
-  <h3>THE FIX</h3>
-  <div class="solution-grid">
-    <div class="solution-card marketing">
-      <h4>Marketing Fix</h4>
-      <ul>
-        <li>Build a 5-day follow-up sequence: immediate call, then SMS, then email with before/after images, then call + SMS at day 3 and day 5</li>
-        <li>Re-engage cold leads every 30 days with a relevant offer or seasonal promotion</li>
-        <li>Train your team on phone scripts - calling converts 3x better than texting alone</li>
-        <li>Track every lead touchpoint so you know exactly where people drop off</li>
-      </ul>
-    </div>
-    <div class="solution-card ai">
-      <h4>AI-Powered Fix</h4>
-      <ul>
-        <li>AI runs the entire follow-up sequence automatically - call, SMS, email on a timed schedule with zero manual effort</li>
-        <li>AI re-engages your old lead database and revives cold leads with personalised messages</li>
-        <li>Smart scheduling sends follow-ups at optimal times based on when leads are most responsive</li>
-        <li>Every interaction is logged in your CRM so nothing falls through the cracks</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ ASSESSMENT 3: BOOKING & CONVERSION ═══════ -->
-<div class="section page-break">
-  <div class="section-tag red">Assessment Area</div>
-  <div class="assessment-block">
-    <div class="assessment-header">
-      <div class="assessment-num">3</div>
-      <div class="assessment-title">BOOKING &amp; CONVERSION</div>
-    </div>
-
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Your team waits for clients to ask about booking instead of proactively offering available times</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Conversations with leads feel more like friendly chats than structured consultations</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You don't have a call script or conversation framework for handling enquiries</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Your no-show rate is above 15%</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Leads ask about pricing and then disappear without booking</div></div></div>
-
-    <div class="leak-highlight">
-      <p>Your team is chatting, not converting. Without structure, every conversation is a coin flip instead of a system.</p>
-      <p class="cost">Estimated annual cost: $10,000 - $25,000</p>
-    </div>
-
-    <div class="score-box">
-      <span class="score-label">Your score for this section</span>
-      <span class="score-value" id="score3">0 / 5</span>
-    </div>
-  </div>
-
-  <h3>THE FIX</h3>
-  <div class="solution-grid">
-    <div class="solution-card marketing">
-      <h4>Marketing Fix</h4>
-      <ul>
-        <li>Create a simple call script: greet, ask about their concern, match to the right treatment, offer 2 available times</li>
-        <li>Always lead the conversation - present available slots confidently rather than asking "when works for you?"</li>
-        <li>Send an automated reminder sequence: 48hrs, 24hrs, and 2hrs before every appointment</li>
-        <li>Price your intro offer in the $199 - $399 sweet spot to filter out tyre-kickers</li>
-      </ul>
-    </div>
-    <div class="solution-card ai">
-      <h4>AI-Powered Fix</h4>
-      <ul>
-        <li>AI qualifies leads using structured conversation flows - asks about their concern, budget, and timeline before booking</li>
-        <li>Appointments are booked directly into your calendar system in real time</li>
-        <li>Automated reminder sequences via SMS reduce no-shows by up to 40%</li>
-        <li>AI handles objections with pre-approved responses tailored to your clinic's services</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ ASSESSMENT 4: TREATMENT DROP-OFF ═══════ -->
-<div class="section page-break">
-  <div class="section-tag red">Assessment Area</div>
-  <div class="assessment-block">
-    <div class="assessment-header">
-      <div class="assessment-num">4</div>
-      <div class="assessment-title">MID-TREATMENT DROP-OFF</div>
-    </div>
-
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Clients regularly book a package of 6 sessions but only complete 3 or 4</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You don't check in with clients between treatment sessions</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">If a client doesn't rebook within a week, nobody follows up</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You don't track which clients are overdue for their next session</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Products recommended during treatment are rarely purchased from you</div></div></div>
-
-    <div class="leak-highlight">
-      <p>A client who books 6 sessions and does 3 represents $2,000 - $4,000 walking out your door. Multiply that across your client base.</p>
-      <p class="cost">Estimated annual cost: $20,000 - $50,000</p>
-    </div>
-
-    <div class="score-box">
-      <span class="score-label">Your score for this section</span>
-      <span class="score-value" id="score4">0 / 5</span>
-    </div>
-  </div>
-
-  <h3>THE FIX</h3>
-  <div class="solution-grid">
-    <div class="solution-card marketing">
-      <h4>Marketing Fix</h4>
-      <ul>
-        <li>Send a warm personal check-in within 24 hours of every treatment</li>
-        <li>Create a "drift detection" system - reach out at day 5 and day 10 if no rebooking</li>
-        <li>Bundle product recommendations into your post-treatment follow-up with a direct purchase link</li>
-        <li>Track treatment completion rates per client and flag anyone who pauses</li>
-      </ul>
-    </div>
-    <div class="solution-card ai">
-      <h4>AI-Powered Fix</h4>
-      <ul>
-        <li>AI sends personalised post-treatment check-ins automatically - asks about recovery, reminds about aftercare</li>
-        <li>Drift alerts trigger AI outreach the moment a client goes overdue for their next session</li>
-        <li>AI sends product recommendation reminders with your clinic's purchase link (not Amazon)</li>
-        <li>Dashboard tracks every client's treatment journey so you can see drop-off points at a glance</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ ASSESSMENT 5: TRACKING & SYSTEMS ═══════ -->
-<div class="section page-break">
-  <div class="section-tag red">Assessment Area</div>
-  <div class="assessment-block">
-    <div class="assessment-header">
-      <div class="assessment-num">5</div>
-      <div class="assessment-title">TRACKING &amp; SYSTEMS</div>
-    </div>
-
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You can't tell which marketing channel is generating your best clients</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Lead information is scattered across Facebook, email, phone notes, and spreadsheets</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You don't know your cost per lead, conversion rate, or client lifetime value</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">There's no single system where your team can see every lead and where they are in the pipeline</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Reporting is manual, time-consuming, or simply doesn't happen</div></div></div>
-
-    <div class="leak-highlight">
-      <p>If you don't track your metrics, scaling is impossible. You're making decisions on gut feel instead of data.</p>
-      <p class="cost">Estimated annual cost: Compounds every other leak</p>
-    </div>
-
-    <div class="score-box">
-      <span class="score-label">Your score for this section</span>
-      <span class="score-value" id="score5">0 / 5</span>
-    </div>
-  </div>
-
-  <h3>THE FIX</h3>
-  <div class="solution-grid">
-    <div class="solution-card marketing">
-      <h4>Marketing Fix</h4>
-      <ul>
-        <li>Centralise all leads into one CRM - every enquiry from every channel in one place</li>
-        <li>Set up pipeline stages: Contacted, Engaged, Booked, Showed, Converted, Rebooked</li>
-        <li>Track cost per lead, conversion rate, and average client value monthly</li>
-        <li>Create a simple weekly dashboard your team reviews every Monday</li>
-      </ul>
-    </div>
-    <div class="solution-card ai">
-      <h4>AI-Powered Fix</h4>
-      <ul>
-        <li>AI auto-logs every interaction across all channels into your CRM with zero manual entry</li>
-        <li>Real-time dashboards show lead flow, conversion rates, and revenue attribution by source</li>
-        <li>Automated weekly reports delivered to your inbox with key metrics and trends</li>
-        <li>AI identifies patterns - which ad, which offer, which time of day generates your best clients</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ ASSESSMENT 6: RETENTION & REFERRALS ═══════ -->
-<div class="section page-break">
-  <div class="section-tag red">Assessment Area</div>
-  <div class="assessment-block">
-    <div class="assessment-header">
-      <div class="assessment-num">6</div>
-      <div class="assessment-title">RETENTION &amp; REFERRALS</div>
-    </div>
-
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You don't have a system to re-engage clients who haven't visited in 60+ days</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Clients finish their treatment plan and you never hear from them again</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You have no referral incentive or program in place</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">Happy clients tell you they love your work but never leave a Google review</div></div></div>
-    <div class="question"><div class="checkbox" onclick="toggle(this)"></div><div><div class="question-text">You spend more on acquiring new clients than retaining existing ones</div></div></div>
-
-    <div class="leak-highlight">
-      <p>It costs 5 - 7x more to acquire a new client than to retain an existing one. Every silent client who drifts away takes their lifetime value with them.</p>
-      <p class="cost">Estimated annual cost: $15,000 - $40,000</p>
-    </div>
-
-    <div class="score-box">
-      <span class="score-label">Your score for this section</span>
-      <span class="score-value" id="score6">0 / 5</span>
-    </div>
-  </div>
-
-  <h3>THE FIX</h3>
-  <div class="solution-grid">
-    <div class="solution-card marketing">
-      <h4>Marketing Fix</h4>
-      <ul>
-        <li>Launch a "we miss you" campaign for clients inactive for 60+ days with a return offer</li>
-        <li>Create a simple referral program - give $50 credit for every friend referred</li>
-        <li>Ask for a Google review within 24 hours of a great treatment while the experience is fresh</li>
-        <li>Build an ascension pathway - after the intro offer, present the next package before they leave</li>
-      </ul>
-    </div>
-    <div class="solution-card ai">
-      <h4>AI-Powered Fix</h4>
-      <ul>
-        <li>AI automatically identifies dormant clients and triggers personalised re-engagement sequences</li>
-        <li>Post-appointment AI messages ask for Google reviews at the optimal moment with a direct link</li>
-        <li>Referral tracking and reward fulfillment runs automatically in the background</li>
-        <li>AI predicts which clients are at risk of churning based on booking patterns and intervenes early</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ LEAD CAPTURE ═══════ -->
-<div class="section page-break" style="border-top: 3px solid var(--accent);" id="capture-section">
-  <div class="section-tag">Get Your Results</div>
-  <h2>SEE YOUR FULL RESULTS</h2>
-  <div class="divider"></div>
-  <p style="margin-bottom: 24px;">Enter your details to unlock your personalised results and revenue leak breakdown.</p>
-
-  <div id="capture-form" style="max-width: 500px; margin: 0 auto;">
-    <div style="margin-bottom: 16px;">
-      <input type="text" id="cap-name" required style="width: 100%; padding: 14px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Your name">
-    </div>
-    <div style="margin-bottom: 16px;">
-      <input type="email" id="cap-email" required style="width: 100%; padding: 14px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Email address">
-    </div>
-    <div style="margin-bottom: 16px;">
-      <input type="tel" id="cap-phone" style="width: 100%; padding: 14px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Phone (optional)">
-    </div>
-    <div style="margin-bottom: 16px;">
-      <input type="text" id="cap-business" style="width: 100%; padding: 14px; background: var(--white-05); border: 1px solid var(--white-20); color: var(--white); font-size: 15px; font-family: inherit; outline: none;" placeholder="Clinic name (optional)">
-    </div>
-    <button onclick="captureAndReveal()" style="display: block; width: 100%; padding: 16px; background: var(--accent); color: var(--bg-dark); font-size: 16px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer;">Show My Results</button>
-    <p style="font-size: 11px; color: var(--white-40); text-align: center; margin-top: 10px;">We'll send you a copy of your results. No spam.</p>
-  </div>
-</div>
-
-<!-- ═══════ RESULTS (hidden until capture) ═══════ -->
-<div class="section page-break" style="border-top: 3px solid var(--accent); display: none;" id="results-section">
-  <div class="section-tag">Your Results</div>
-  <h2>TOTAL YOUR SCORE</h2>
-  <div class="divider"></div>
-
-  <div class="score-box" style="margin-bottom: 32px; background: var(--accent-soft); border-color: var(--accent);">
-    <span class="score-label" style="font-size: 16px; color: var(--accent);">Total ticks across all 6 areas</span>
-    <span class="score-value" style="font-size: 36px;" id="totalScore">0 / 30</span>
-  </div>
-
-  <div class="result-tier critical">
-    <div class="result-range">20 - 30 TICKS</div>
-    <div class="result-label">CRITICAL - HAEMORRHAGING REVENUE</div>
-    <p>Your clinic is likely losing <strong style="color: var(--red);">$50,000 - $100,000+ per year</strong> through system gaps. The good news: fixing even 2 - 3 of these areas will have an immediate, measurable impact on your bottom line. You need a system overhaul - not more ad spend.</p>
-  </div>
-
-  <div class="result-tier warning">
-    <div class="result-range">10 - 19 TICKS</div>
-    <div class="result-label">WARNING - SIGNIFICANT LEAKS</div>
-    <p>You've got some good foundations but there are clear gaps costing you <strong style="color: #F5A623;">$20,000 - $50,000 per year</strong>. Targeted fixes in your weakest areas will unlock revenue you're already paying to generate through ads.</p>
-  </div>
-
-  <div class="result-tier good">
-    <div class="result-range">0 - 9 TICKS</div>
-    <div class="result-label">STRONG - READY TO SCALE</div>
-    <p>Your systems are working well. Your next move is to <strong style="color: var(--accent);">automate and scale</strong> what's already working. AI integration can multiply your team's capacity without adding headcount.</p>
-  </div>
-</div> <!-- close results-section -->
-
-<!-- ═══════ EVERYTHING BELOW HIDDEN UNTIL CAPTURE ═══════ -->
-<div id="post-capture" style="display: none;">
-
-<!-- ═══════ COST CALCULATOR ═══════ -->
-<div class="section page-break">
-  <div class="section-tag red">Reality Check</div>
-  <h2>CALCULATE YOUR COST</h2>
-  <div class="divider"></div>
-  <p style="margin-bottom: 24px;">Fill in the numbers to see what these leaks are actually costing your clinic per year.</p>
-
-  <div class="calc-row">
-    <span class="calc-label">How many leads per month do you get?</span>
-    <input class="calc-input" type="text" placeholder="___">
-  </div>
-  <div class="calc-row">
-    <span class="calc-label">What % actually book? (industry avg is 7%)</span>
-    <input class="calc-input" type="text" placeholder="___%">
-  </div>
-  <div class="calc-row">
-    <span class="calc-label">Average treatment value ($)</span>
-    <input class="calc-input" type="text" placeholder="$___">
-  </div>
-  <div class="calc-row">
-    <span class="calc-label">How many clients started a package and didn't finish this year?</span>
-    <input class="calc-input" type="text" placeholder="___">
-  </div>
-  <div class="calc-row">
-    <span class="calc-label">Average remaining value per dropped client ($)</span>
-    <input class="calc-input" type="text" placeholder="$___">
-  </div>
-
-  <div class="intro-box" style="margin-top: 32px;">
-    <p><strong style="color: var(--accent);">The formula:</strong> (Dropped clients x Remaining value) + (Unconverted leads x Treatment value) = What you're leaving on the table.</p>
-  </div>
-
-  <div style="margin-top: 24px; padding: 20px 24px; background: var(--red-soft); border: 1px solid rgba(232,64,64,0.3);">
-    <p style="font-size: 16px; color: var(--white-90); font-weight: 500;">You're <strong style="color: var(--red);">60x more likely</strong> to qualify a lead in 5 minutes vs 24 hours. <span style="color: var(--white-40); font-size: 13px;">(Harvard Business Review)</span></p>
-    <p style="font-size: 16px; color: var(--white-90); font-weight: 500; margin-top: 8px;"><strong style="color: var(--red);">1 in 4</strong> clinic calls go unanswered. <span style="color: var(--white-40); font-size: 13px;">(Talkdesk Healthcare Report 2025)</span></p>
-  </div>
-</div>
-
-<!-- ═══════ QUICK WINS ═══════ -->
-<div class="section page-break">
-  <div class="section-tag">Action Plan</div>
-  <h2>YOUR TOP 3 QUICK WINS</h2>
-  <div class="divider"></div>
-  <p style="margin-bottom: 24px;">Based on the most common leaks we see across clinics, these three changes deliver the fastest ROI:</p>
-
-  <div style="margin-bottom: 24px; padding: 24px; border: 1px solid var(--accent); background: var(--accent-soft);">
-    <div style="display: flex; gap: 16px; align-items: start;">
-      <div style="width: 40px; height: 40px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; color: var(--bg-dark); flex-shrink: 0;">1</div>
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="review-icon">&#127912;</div>
       <div>
-        <p style="font-weight: 700; color: var(--white); font-size: 17px; margin-bottom: 6px;">Respond to every lead within 5 minutes</p>
-        <p style="font-size: 14px;">This alone can double your conversion rate with zero additional ad spend. If you can't do it manually, AI can do it in under 60 seconds, 24/7.</p>
+        <h3>Creative</h3>
+        <p>Your visuals, your branding, your ad imagery. Are they stopping the scroll or blending into the feed? We'll tell you.</p>
       </div>
     </div>
-  </div>
-
-  <div style="margin-bottom: 24px; padding: 24px; border: 1px solid var(--accent); background: var(--accent-soft);">
-    <div style="display: flex; gap: 16px; align-items: start;">
-      <div style="width: 40px; height: 40px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; color: var(--bg-dark); flex-shrink: 0;">2</div>
+    <div class="review-card">
+      <div class="review-icon">&#9997;</div>
       <div>
-        <p style="font-weight: 700; color: var(--white); font-size: 17px; margin-bottom: 6px;">Build a 5-day follow-up sequence</p>
-        <p style="font-size: 14px;">Most clinics send one message and give up. A structured sequence of call, SMS, email, call, SMS across 5 days keeps you top of mind until they book.</p>
+        <h3>Copy</h3>
+        <p>Your website, your ads, your captions. Is your message landing with the right people or talking to nobody? We'll show you where the words are losing you money.</p>
       </div>
     </div>
-  </div>
-
-  <div style="margin-bottom: 24px; padding: 24px; border: 1px solid var(--accent); background: var(--accent-soft);">
-    <div style="display: flex; gap: 16px; align-items: start;">
-      <div style="width: 40px; height: 40px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; color: var(--bg-dark); flex-shrink: 0;">3</div>
+    <div class="review-card">
+      <div class="review-icon">&#128200;</div>
       <div>
-        <p style="font-weight: 700; color: var(--white); font-size: 17px; margin-bottom: 6px;">Check in 24 hours after every treatment</p>
-        <p style="font-size: 14px;">A warm personal tap after treatment prevents mid-package drop-off, builds loyalty, and creates the perfect moment to ask for a review or referral.</p>
+        <h3>Ads</h3>
+        <p>Your ad setup, targeting, offer structure. Are you spending to grow or spending to burn? We'll find out.</p>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-icon">&#127919;</div>
+      <div>
+        <h3>Strategy</h3>
+        <p>Your offers, your pricing, your client journey from first click to repeat booking. We'll map the gaps you can't see from inside the business.</p>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-icon">&#9881;</div>
+      <div>
+        <h3>Systems</h3>
+        <p>Your follow-up process, your booking flow, your lead response time. The invisible stuff that's costing you clients while you're busy treating the ones you already have.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════ MEET ARIA ═══════ -->
-<div class="section page-break" style="border-top: 3px solid var(--accent); text-align: center;">
-  <div class="section-tag">The Solution</div>
-  <h2 style="font-size: 36px; margin-bottom: 8px;">WHAT IF YOU COULD FIX<br>EVERY LEAK AUTOMATICALLY?</h2>
+<!-- ====== OUTCOMES ====== -->
+<div class="section dot-grid">
+  <div class="section-tag">What You Walk Away With</div>
+  <h2>Recommendations That <span>Actually Work</span></h2>
+  <div class="divider"></div>
+  <p>This isn't theory. Every recommendation we give you is something you can put in place immediately. No jargon. No fluff. Just what to do, why it matters, and exactly how to do it.</p>
+
+  <div class="outcome-strip">
+    <div class="outcome-box">
+      <div class="big">TIME</div>
+      <p>Stop leaking energy into things that should run themselves. Get hours back every week.</p>
+    </div>
+    <div class="outcome-box">
+      <div class="big">MONEY</div>
+      <p>Stop paying for leads that never book. Turn what you're already spending into real revenue.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 28px; padding: 24px; border-left: 3px solid var(--accent); background: var(--accent-soft);">
+    <p style="color: var(--white-90); font-weight: 500;">Most clinics are sitting on $20K - $100K in revenue they're already paying to generate but never collecting. We find it. We show you how to get it. You decide what to do next.</p>
+  </div>
+</div>
+
+<!-- ====== HOW IT WORKS ====== -->
+<div class="section dot-grid">
+  <div class="section-tag">How It Works</div>
+  <h2>Three Steps. <span>Done.</span></h2>
+  <div class="divider"></div>
+
+  <div class="step-row">
+    <div class="step-num">1</div>
+    <div>
+      <h3>Book your session</h3>
+      <p>Click the button below and pick a time that works. Takes 30 seconds.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <div class="step-num">2</div>
+    <div>
+      <h3>We review everything</h3>
+      <p>We look at your creative, copy, ads, strategy and systems before we even get on a call. You'll get honest, specific feedback from two people who do this every day.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <div class="step-num">3</div>
+    <div>
+      <h3>You get your recommendations</h3>
+      <p>Real fixes. Prioritised by impact. Things you can action this week to get back your time and start making more money from the clients you're already attracting.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== WHO WE ARE ====== -->
+<div class="section dot-grid">
+  <div class="section-tag">Who We Are</div>
+  <h2>Built By People Who <span>Fill Clinics</span></h2>
+  <div class="divider"></div>
+
+  <div class="about-row">
+    <img src="kelly-alicia-abm.png" alt="Kelly Wotherspoon and Alicia Hagen at Aesthetics Business Masters" class="about-photo">
+    <div class="about-text">
+      <p><strong>Alicia Hagen</strong> has spent over a decade in clinic marketing - building the offers, running the ads, and creating the content that gets people through the door.</p>
+      <p style="margin-top: 12px;"><strong>Kelly Wotherspoon</strong> builds the AI systems and automations that make sure those leads actually convert - faster responses, smarter follow-up, zero dropped balls.</p>
+      <p style="margin-top: 12px;">Together, we handle both sides: <strong>getting the leads and turning them into revenue.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== CTA ====== -->
+<div class="form-section dot-grid" id="book">
+  <div style="display: inline-block; padding: 10px 28px; border: 2px solid var(--accent); background: var(--accent-soft); margin-bottom: 32px;">
+    <span style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--accent);">Clinic Catalyst</span>
+  </div>
+
+  <h2 style="margin-bottom: 8px;">Book Your <span>Free Review</span></h2>
   <div style="width: 60px; height: 3px; background: var(--accent); margin: 16px auto 24px;"></div>
-  <p style="font-size: 18px; color: var(--white-80); max-width: 600px; margin: 0 auto 32px;">Every revenue leak in this assessment - the slow responses, the missed follow-ups, the treatment drop-offs, the silent clients - comes down to one thing: <strong style="color: var(--accent);">capacity</strong>.</p>
-  <p style="font-size: 18px; color: var(--white-80); max-width: 600px; margin: 0 auto 40px;">You already know what to do. You just can't do it all while running a clinic.</p>
+  <p style="max-width: 480px; margin: 0 auto 32px; text-align: center;">30 minutes with two specialists who actually fill clinics. Zero obligation.</p>
 
-  <div style="background: var(--accent-soft); border: 2px solid var(--accent); padding: 40px; max-width: 600px; margin: 0 auto 40px;">
-    <h2 style="font-size: 32px; margin-bottom: 8px;">MEET <span style="color: var(--accent);">ARIA</span></h2>
-    <p style="font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 20px;">Your AI Clinic Manager</p>
-    <div style="text-align: left; max-width: 450px; margin: 0 auto;">
-      <div style="display: flex; gap: 12px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--white-10);">
-        <span style="color: var(--accent); font-weight: 700; font-size: 18px;">&#10003;</span>
-        <span style="font-size: 15px; color: var(--white-80);">Responds to every enquiry in under 60 seconds - 24/7</span>
-      </div>
-      <div style="display: flex; gap: 12px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--white-10);">
-        <span style="color: var(--accent); font-weight: 700; font-size: 18px;">&#10003;</span>
-        <span style="font-size: 15px; color: var(--white-80);">Runs your entire follow-up sequence automatically</span>
-      </div>
-      <div style="display: flex; gap: 12px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--white-10);">
-        <span style="color: var(--accent); font-weight: 700; font-size: 18px;">&#10003;</span>
-        <span style="font-size: 15px; color: var(--white-80);">Books appointments directly into your calendar</span>
-      </div>
-      <div style="display: flex; gap: 12px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--white-10);">
-        <span style="color: var(--accent); font-weight: 700; font-size: 18px;">&#10003;</span>
-        <span style="font-size: 15px; color: var(--white-80);">Catches mid-treatment drop-offs before they disappear</span>
-      </div>
-      <div style="display: flex; gap: 12px; align-items: start; padding: 10px 0;">
-        <span style="color: var(--accent); font-weight: 700; font-size: 18px;">&#10003;</span>
-        <span style="font-size: 15px; color: var(--white-80);">Never misses a lead. Never has a bad day.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- QR removed - leads now captured via interest form in CTA section -->
+  <a href="https://api.leadconnectorhq.com/widget/bookings/adsmarketingsystems" target="_blank" class="hero-cta" style="display: inline-block; text-decoration: none; padding: 20px 60px;">Book Your Free 30-Minute Review</a>
+  <p style="font-size: 13px; color: var(--white-40); margin-top: 16px;">Pick a time that works for you. We'll do the rest.</p>
 </div>
 
-<!-- ═══════ CTA ═══════ -->
-<div class="cta-section">
-  <div style="display: inline-block; padding: 10px 32px; border: 2px solid var(--accent); background: var(--accent-soft); margin-bottom: 32px;">
-    <span style="font-size: 18px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--accent);">Clinic Catalyst</span>
-  </div>
-  <h2 style="font-size: 36px; margin-bottom: 16px; line-height: 1.25;">GREAT MARKETING GETS LEADS.<br>GREAT SYSTEMS TURN THEM INTO REVENUE.<br><span style="color: var(--accent);">WE HANDLE BOTH.</span></h2>
-  <div style="width: 60px; height: 3px; background: var(--accent); margin: 16px auto 24px;"></div>
-  <p style="font-size: 18px; color: var(--white-80); max-width: 550px; margin: 0 auto 8px;">We build the systems that fix these problems permanently - done for you.</p>
-  <p style="font-size: 16px; color: var(--white-60); max-width: 550px; margin: 0 auto 32px;">All month-to-month. No lock-in contracts.</p>
-
-  <div id="pkg-cards" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto 32px; text-align: left;">
-    <div style="padding: 24px; border: 1px solid var(--white-20); background: var(--white-05);">
-      <p style="font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white-40); margin-bottom: 8px;">Growth Engine</p>
-      <p style="font-size: 13px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 12px;">Ads + AI + Full System</p>
-      <p style="font-size: 28px; font-weight: 900; color: var(--accent); margin-bottom: 4px;">$1,899<span style="font-size: 14px; font-weight: 400; color: var(--white-40);"> /mo + ad spend</span></p>
-      <div style="border-top: 1px solid var(--white-10); margin: 16px 0; padding-top: 12px; font-size: 13px; color: var(--white-60); line-height: 1.8;">
-        <div>&#8594; Offer strategy + ad creative production</div>
-        <div>&#8594; Facebook &amp; Instagram ads management</div>
-        <div>&#8594; AI voice caller responds in under 60s, 24/7</div>
-        <div>&#8594; AI DM replies across Facebook &amp; Instagram</div>
-        <div>&#8594; Website chat widget + lead capture</div>
-        <div>&#8594; Automated follow-up sequences (call, SMS, email)</div>
-        <div>&#8594; CRM pipeline + calendar booking integration</div>
-        <div>&#8594; Appointment reminders to reduce no-shows</div>
-        <div>&#8594; Monthly performance reporting</div>
-      </div>
-      <a href="https://api.leadconnectorhq.com/widget/bookings/onboarding-clinic-catalyst" target="_blank" style="display: block; width: 100%; text-align: center; padding: 14px; background: transparent; border: 1.5px solid var(--accent); color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; margin-top: 12px; text-decoration: none;">I Want This - Onboard Me Now</a>
-    </div>
-    <div style="padding: 24px; border: 2px solid var(--accent); background: var(--accent-soft);">
-      <p style="font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;">Full Acquisition System</p>
-      <p style="font-size: 13px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 12px;">Ads + AI + Google + GEO</p>
-      <p style="font-size: 28px; font-weight: 900; color: var(--accent); margin-bottom: 4px;">$2,599<span style="font-size: 14px; font-weight: 400; color: var(--white-40);"> /mo + ad spend</span></p>
-      <div style="border-top: 1px solid var(--white-10); margin: 16px 0; padding-top: 12px; font-size: 13px; color: var(--white-60); line-height: 1.8;">
-        <div>&#8594; Everything in Growth Engine</div>
-        <div>&#8594; Google Ads management + conversion tracking</div>
-        <div>&#8594; GEO + local search optimisation</div>
-        <div>&#8594; SMS &amp; email nurture sequences</div>
-        <div>&#8594; Treatment drop-off re-engagement automations</div>
-        <div>&#8594; Review generation system</div>
-        <div>&#8594; Bi-weekly strategy calls</div>
-        <div>&#8594; Dedicated account manager</div>
-      </div>
-      <a href="https://api.leadconnectorhq.com/widget/bookings/onboarding-clinic-catalyst" target="_blank" style="display: block; width: 100%; text-align: center; padding: 14px; background: var(--accent); color: var(--bg-dark); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border: none; margin-top: 12px; text-decoration: none;">I Want This - Onboard Me Now</a>
-    </div>
-  </div>
-
-  <!-- Stripe deposit buttons above - link placeholder until Alicia provides Stripe URL -->
-
-  <p style="font-size: 16px; color: var(--white-80); margin-bottom: 16px;">Alicia Hagen &amp; Kelly Wotherspoon</p>
+<!-- ====== FOOTER ====== -->
+<div style="padding: 24px 32px; text-align: center; border-top: 1px solid var(--white-10);">
+  <p style="font-size: 13px; color: var(--white-40);">Alicia Hagen & Kelly Wotherspoon</p>
 </div>
 
-</div> <!-- close post-capture -->
-
-<!-- ═══════ DOWNLOAD BAR ═══════ -->
-<div class="download-bar no-print">
-  <button onclick="window.print()">Download as PDF</button>
-  <button class="secondary" onclick="resetAll()">Reset Assessment</button>
-</div>
-
-<div style="height: 60px;"></div>
-
-<script>
-  function toggle(el) {
-    el.classList.toggle('checked');
-    updateScores();
-  }
-
-  function updateScores() {
-    const sections = [
-      { id: 'score1', start: 0, count: 5 },
-      { id: 'score2', start: 5, count: 5 },
-      { id: 'score3', start: 10, count: 5 },
-      { id: 'score4', start: 15, count: 5 },
-      { id: 'score5', start: 20, count: 5 },
-      { id: 'score6', start: 25, count: 5 }
-    ];
-
-    const allBoxes = document.querySelectorAll('.checkbox');
-    let grandTotal = 0;
-
-    sections.forEach(sec => {
-      let count = 0;
-      for (let i = sec.start; i < sec.start + sec.count; i++) {
-        if (allBoxes[i] && allBoxes[i].classList.contains('checked')) count++;
-      }
-      grandTotal += count;
-      document.getElementById(sec.id).textContent = count + ' / ' + sec.count;
-    });
-
-    document.getElementById('totalScore').textContent = grandTotal + ' / 30';
-  }
-
-  function resetAll() {
-    document.querySelectorAll('.checkbox').forEach(c => c.classList.remove('checked'));
-    updateScores();
-  }
-
-  // Supabase config
-  const SUPABASE_URL = 'https://jiquevvzrdavgqonvvug.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4';
-
-  function getScores() {
-    const sections = [
-      { key: 'score_lead_response', start: 0, count: 5 },
-      { key: 'score_followup', start: 5, count: 5 },
-      { key: 'score_booking', start: 10, count: 5 },
-      { key: 'score_dropoff', start: 15, count: 5 },
-      { key: 'score_tracking', start: 20, count: 5 },
-      { key: 'score_retention', start: 25, count: 5 }
-    ];
-    const allBoxes = document.querySelectorAll('.checkbox');
-    const scores = {};
-    let total = 0;
-    sections.forEach(sec => {
-      let count = 0;
-      for (let i = sec.start; i < sec.start + sec.count; i++) {
-        if (allBoxes[i] && allBoxes[i].classList.contains('checked')) count++;
-      }
-      scores[sec.key] = count;
-      total += count;
-    });
-    scores.total_score = total;
-    return scores;
-  }
-
-  function captureAndReveal() {
-    const name = document.getElementById('cap-name').value.trim();
-    const email = document.getElementById('cap-email').value.trim();
-    const phone = document.getElementById('cap-phone').value.trim();
-    const business = document.getElementById('cap-business').value.trim();
-
-    if (!name || !email) {
-      alert('Please enter your name and email to see your results.');
-      return;
-    }
-
-    const scores = getScores();
-
-    // Save to Supabase
-    fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_leads', {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        phone: phone || null,
-        business: business || null,
-        score_lead_response: scores.score_lead_response,
-        score_followup: scores.score_followup,
-        score_booking: scores.score_booking,
-        score_dropoff: scores.score_dropoff,
-        score_tracking: scores.score_tracking,
-        score_retention: scores.score_retention,
-        total_score: scores.total_score,
-        source: 'assessment'
-      })
-    }).catch(() => {});
-
-    // Reveal results
-    document.getElementById('capture-form').innerHTML = '<p style="text-align:center;color:var(--accent);font-weight:700;font-size:18px;">&#10003; Results unlocked, ' + name.split(' ')[0] + '!</p>';
-    document.getElementById('results-section').style.display = 'block';
-    document.getElementById('post-capture').style.display = 'block';
-    document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
-  }
-
-</script>
 
 </body>
 </html>
