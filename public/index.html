@@ -3,572 +3,1882 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Clinic Review - Clinic Catalyst</title>
-<meta name="description" content="Get your creative, copy, ads, strategy and systems reviewed by two specialists who actually fill clinics. Real recommendations you can use today.">
+<title>AIOS Discovery - AI with Soul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+  :root {
+    --cream: #F5F0EB;
+    --mid-cream: #EDE8E0;
+    --navy: #3B3229;
+    --rose: #B7634B;
+    --rose-light: #C4765E;
+    --bronze: #A8553D;
+    --charcoal: #3B3229;
+    --cream-text: #F5F0EB;
+    --sage: #7C8B6F;
+    --rust: #B7634B;
+  }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --bg-dark: #0A2A28;
-    --bg-darker: #061E1C;
-    --accent: #00D4BC;
-    --accent2: #00B4A0;
-    --accent-dark: #007A6E;
-    --white: #FFFFFF;
-    --white-90: rgba(255,255,255,0.9);
-    --white-80: rgba(255,255,255,0.8);
-    --white-60: rgba(255,255,255,0.6);
-    --white-40: rgba(255,255,255,0.4);
-    --white-20: rgba(255,255,255,0.2);
-    --white-10: rgba(255,255,255,0.1);
-    --white-05: rgba(255,255,255,0.05);
-    --red: #E84040;
-    --red-soft: rgba(232,64,64,0.1);
-    --accent-soft: rgba(0,212,188,0.08);
-    --accent-med: rgba(0,212,188,0.15);
-  }
-
-  html { background: #000; scroll-behavior: smooth; }
-
   body {
-    font-family: 'Open Sans', sans-serif;
-    color: var(--white);
-    max-width: 800px;
-    margin: 0 auto;
-    background: var(--bg-dark);
-  }
-
-  h1, h2, h3, h4, .brand-tag, .section-tag {
-    font-family: 'Montserrat', sans-serif;
-  }
-
-  /* ---- DOT GRID ---- */
-  .dot-grid {
-    position: relative;
-  }
-  .dot-grid::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(0,212,188,0.06) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-  }
-
-  /* ---- HERO ---- */
-  .hero {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.7;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  }
+
+  /* --- Hero --- */
+  .hero {
+    background: var(--cream);
+    padding: 60px 24px 50px;
     text-align: center;
-    padding: 60px 32px;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(160deg, #0A2A28 0%, #061E1C 60%, #0A2A28 100%);
+    border-bottom: 1px solid var(--mid-cream);
   }
-
-  .hero-content { position: relative; z-index: 1; max-width: 640px; }
-
-  .brand-tag {
-    display: inline-block;
-    padding: 10px 28px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 2px solid var(--accent);
-    background: var(--accent-soft);
-    margin-bottom: 40px;
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(196,149,106,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(124,139,111,0.05) 0%, transparent 50%);
+    pointer-events: none;
   }
-
-  .hero h1 {
-    font-size: 38px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.15;
-    margin-bottom: 24px;
-  }
-
-  .hero h1 span { color: var(--accent); }
-
-  .hero .subtitle {
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--white-80);
-    line-height: 1.7;
-    margin-bottom: 40px;
-  }
-
-  .hero-cta {
-    display: inline-block;
-    padding: 18px 48px;
-    background: var(--accent);
-    color: var(--bg-dark);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-decoration: none;
-    transition: background 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-
-  .hero-cta:hover { background: var(--accent2); }
-
-  .hero-note {
-    font-size: 13px;
-    color: var(--white-40);
-    margin-top: 16px;
-  }
-
-  /* ---- SECTIONS ---- */
-  .section {
-    padding: 60px 32px;
-    border-top: 1px solid var(--white-10);
+  .hero-inner {
+    max-width: 640px;
+    margin: 0 auto;
     position: relative;
+    z-index: 1;
   }
-
-  .section > * { position: relative; z-index: 1; }
-
-  .section-tag {
+  .hero-badge {
     display: inline-block;
-    padding: 5px 14px;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    color: var(--rose);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 600;
+    color: var(--charcoal);
+    line-height: 1.25;
     margin-bottom: 16px;
   }
-
-  h2 {
-    font-size: 28px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  h2 span { color: var(--accent); }
-
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: var(--accent);
-    margin: 16px 0 24px;
-  }
-
-  p { font-weight: 300; line-height: 1.7; color: var(--white-80); font-size: 15px; }
-  p + p { margin-top: 12px; }
-
-  /* ---- REVIEW AREAS ---- */
-  .review-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-top: 28px;
-  }
-
-  .review-card {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 24px;
-    border: 1px solid var(--white-20);
-    background: var(--white-05);
-  }
-
-  .review-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--accent-med);
-    border: 1px solid var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-
-  .review-card h3 {
-    font-family: 'Montserrat', sans-serif;
+  .hero p {
     font-size: 15px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--white);
-    margin-bottom: 6px;
-  }
-
-  .review-card p {
-    font-size: 14px;
-    color: var(--white-60);
-    line-height: 1.6;
-  }
-
-  /* ---- OUTCOME STRIP ---- */
-  .outcome-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 28px;
-  }
-
-  @media (max-width: 600px) {
-    .outcome-strip { grid-template-columns: 1fr; }
-  }
-
-  .outcome-box {
-    padding: 28px;
-    border: 2px solid var(--accent);
-    background: var(--accent-soft);
-    text-align: center;
-  }
-
-  .outcome-box .big {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 36px;
-    font-weight: 900;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .outcome-box p {
-    font-size: 14px;
-    color: var(--white-80);
-    text-align: center;
-  }
-
-  /* ---- HOW IT WORKS ---- */
-  .step-row {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--white-10);
-  }
-
-  .step-row:last-child { border-bottom: none; }
-
-  .step-num {
-    width: 44px;
-    height: 44px;
-    background: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 20px;
-    color: var(--bg-dark);
-    flex-shrink: 0;
-  }
-
-  .step-row h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--white);
-    margin-bottom: 4px;
-  }
-
-  .step-row p {
-    font-size: 14px;
-    color: var(--white-60);
-  }
-
-  /* ---- PHOTO + CREDIBILITY ---- */
-  .about-row {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-    margin-top: 28px;
-  }
-
-  @media (max-width: 600px) {
-    .about-row { flex-direction: column; text-align: center; }
-  }
-
-  .about-photo {
-    width: 220px;
-    height: 280px;
-    object-fit: cover;
-    object-position: center top;
-    flex-shrink: 0;
-    border: 2px solid var(--white-20);
-  }
-
-  .about-text p {
-    font-size: 14px;
-    color: var(--white-60);
-    line-height: 1.7;
-  }
-
-  .about-text strong { color: var(--white-90); }
-
-  /* ---- FORM ---- */
-  .form-section {
-    background: linear-gradient(160deg, #0A2A28 0%, #061E1C 100%);
-    border-top: 3px solid var(--accent);
-    padding: 60px 32px;
-    text-align: center;
-  }
-
-  .form-wrap {
-    max-width: 480px;
+    color: var(--charcoal);
+    max-width: 540px;
     margin: 0 auto;
-    text-align: left;
+    opacity: 0.7;
+    line-height: 1.8;
   }
 
-  .form-wrap input, .form-wrap select {
-    width: 100%;
-    padding: 14px 16px;
-    margin-bottom: 14px;
-    background: var(--white-05);
-    border: 1px solid var(--white-20);
-    color: var(--white);
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s;
+  /* --- Form container --- */
+  .form-wrap {
+    max-width: 720px;
+    margin: -20px auto 60px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
   }
 
-  .form-wrap input::placeholder { color: var(--white-40); }
+  /* --- Step indicator --- */
+  .steps {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding-top: 40px;
+  }
+  .step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--mid-cream);
+    border: 2px solid var(--rose-light);
+    transition: all 0.3s ease;
+  }
+  .step-dot.active {
+    background: var(--rose);
+    border-color: var(--rose);
+    transform: scale(1.15);
+  }
+  .step-dot.done {
+    background: var(--rose);
+    border-color: var(--rose);
+  }
 
-  .form-wrap input:focus { border-color: var(--accent); }
-
-  .form-btn {
-    display: block;
-    width: 100%;
-    padding: 18px;
-    background: var(--accent);
-    color: var(--bg-dark);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
+  /* --- Progress bar --- */
+  .progress-bar {
+    max-width: 720px;
+    margin: 0 auto 8px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+  .progress-track {
+    height: 3px;
+    background: var(--mid-cream);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--rose-light), var(--rose));
+    border-radius: 3px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .progress-label {
+    font-size: 11px;
+    color: #999;
+    text-align: right;
     margin-top: 4px;
   }
 
-  .form-btn:hover { background: var(--accent2); }
+  /* --- Form sections --- */
+  .form-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 36px;
+    box-shadow: 0 4px 24px rgba(15,30,54,0.06);
+    display: none;
+  }
+  .form-section.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-  .form-fine {
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  /* --- Fields --- */
+  .field {
+    margin-bottom: 24px;
+  }
+  .field:last-child {
+    margin-bottom: 0;
+  }
+  .field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .field label .required {
+    color: var(--rose);
+    margin-left: 2px;
+  }
+  .field .hint {
     font-size: 12px;
-    color: var(--white-40);
+    color: #999;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 13px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--charcoal);
+    background: var(--cream);
+    border: 1.5px solid #DDD8D0;
+    border-radius: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--rose);
+    box-shadow: 0 0 0 3px rgba(196,149,106,0.12);
+  }
+  textarea {
+    min-height: 90px;
+    resize: vertical;
+  }
+  textarea.short {
+    min-height: 60px;
+  }
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23B7634B' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* --- Checkboxes --- */
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--charcoal);
+    padding: 10px 16px;
+    background: var(--cream);
+    border: 1.5px solid #DDD8D0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    margin-bottom: 0;
+  }
+  .checkbox-group label:hover {
+    border-color: var(--rose-light);
+  }
+  .checkbox-group label.checked {
+    background: rgba(196,149,106,0.08);
+    border-color: var(--rose);
+  }
+  .checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--rose);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  /* --- Radio pills --- */
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--charcoal);
+    padding: 10px 20px;
+    background: var(--cream);
+    border: 1.5px solid #DDD8D0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    margin-bottom: 0;
+  }
+  .radio-group label:hover {
+    border-color: var(--rose-light);
+  }
+  .radio-group label.checked {
+    background: rgba(196,149,106,0.08);
+    border-color: var(--rose);
+  }
+  .radio-group input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--rose);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  /* --- Readiness scale --- */
+  .scale-wrap {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .scale-btn {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid #DDD8D0;
+    border-radius: 8px;
+    background: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .scale-btn:hover {
+    border-color: var(--rose-light);
+  }
+  .scale-btn.selected {
+    background: linear-gradient(135deg, var(--rose-light), var(--rose));
+    border-color: var(--rose);
+    color: #fff;
+  }
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #999;
+    margin-top: 6px;
+  }
+
+  /* --- Buttons --- */
+  .btn-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    gap: 12px;
+  }
+  .btn-back {
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--rose);
+    background: none;
+    border: 1.5px solid var(--rose-light);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-back:hover {
+    background: rgba(196,149,106,0.06);
+  }
+  .btn-next, .btn-submit {
+    padding: 14px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #C4765E 0%, #B7634B 40%, #A8553D 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 4px 12px rgba(196,149,106,0.25);
+  }
+  .btn-next:hover, .btn-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(196,149,106,0.35);
+  }
+  .btn-next:disabled, .btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-spacer {
+    flex: 1;
+  }
+
+  /* --- Thank you --- */
+  .thank-you {
     text-align: center;
+    padding: 60px 36px;
+    display: none;
+  }
+  .thank-you.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+  .thank-you h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .thank-you p {
+    font-size: 15px;
+    color: #666;
+    max-width: 480px;
+    margin: 0 auto 24px;
+    line-height: 1.8;
+  }
+  .thank-you .check-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--rose-light), var(--rose));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+  .thank-you .check-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: #fff;
+    stroke-width: 3;
+    fill: none;
+  }
+  .thank-you .btn-book {
+    display: inline-block;
+    padding: 14px 36px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #C4765E 0%, #B7634B 40%, #A8553D 100%);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s;
+    box-shadow: 0 4px 12px rgba(196,149,106,0.25);
+  }
+  .thank-you .btn-book:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(196,149,106,0.35);
+  }
+  .thank-you .sub-note {
+    font-size: 12px;
+    color: #aaa;
     margin-top: 12px;
   }
 
-  /* ---- URGENCY ---- */
-  .urgency-bar {
-    background: var(--red-soft);
-    border: 1px solid rgba(232,64,64,0.3);
-    padding: 16px 24px;
-    text-align: center;
-    margin-bottom: 32px;
+  /* --- Offer reveal card --- */
+  .offer-reveal {
+    background: var(--charcoal);
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin: 28px 0 32px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
   }
-
-  .urgency-bar p {
-    font-size: 15px;
+  .offer-reveal::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 60%;
+    height: 180%;
+    background: radial-gradient(ellipse at 70% 40%, rgba(196,149,106,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .offer-reveal-badge {
+    display: inline-block;
+    font-size: 10px;
     font-weight: 600;
-    color: var(--red);
-  }
-
-  /* ---- SUCCESS STATE ---- */
-  .success-msg {
-    padding: 40px;
-    text-align: center;
-  }
-
-  .success-msg h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--accent);
+    letter-spacing: 2px;
     text-transform: uppercase;
+    color: var(--rose);
     margin-bottom: 12px;
   }
-
-  .success-msg p {
-    font-size: 16px;
-    color: var(--white-80);
-    margin-bottom: 24px;
+  .offer-reveal h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 26px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  .offer-includes {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .offer-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--cream-text);
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+  .offer-includes li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rose);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .offer-price-row {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    margin-top: 4px;
+  }
+  .offer-price-strike {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .offer-price-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--rose-light);
+    line-height: 1.2;
+  }
+  .offer-price-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+  .offer-urgency {
+    background: rgba(196,149,106,0.12);
+    border-left: 3px solid var(--rose);
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--cream-text);
+    opacity: 0.85;
+    line-height: 1.5;
   }
 
-  /* ---- RESPONSIVE ---- */
+  /* --- Footer --- */
+  .footer {
+    text-align: center;
+    padding: 30px 24px 40px;
+    font-size: 12px;
+    color: #999;
+  }
+  .footer a {
+    color: var(--rose);
+    text-decoration: none;
+  }
+
+  /* --- Error state --- */
+  .field.error input,
+  .field.error textarea,
+  .field.error select {
+    border-color: #D4574E;
+  }
+  .field .error-msg {
+    font-size: 12px;
+    color: #D4574E;
+    margin-top: 4px;
+    display: none;
+  }
+  .field.error .error-msg {
+    display: block;
+  }
+
+  /* --- Responsive --- */
   @media (max-width: 600px) {
-    .hero { padding: 40px 20px; }
-    .hero h1 { font-size: 28px; }
-    .hero .subtitle { font-size: 16px; }
-    .section { padding: 40px 20px; }
-    h2 { font-size: 22px; }
-    .form-section { padding: 40px 20px; }
-    .about-photo { width: 140px; height: 170px; }
+    .hero { padding: 48px 20px 40px; }
+    .form-section { padding: 28px 22px; }
+    .checkbox-group label { width: 100%; }
+    .radio-group label { width: 100%; }
+    .scale-wrap { justify-content: center; }
+    .row-2 { grid-template-columns: 1fr; }
+    .btn-row { flex-wrap: wrap; }
+    .btn-next, .btn-submit { width: 100%; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- ====== HERO ====== -->
-<div class="hero dot-grid">
-  <div class="hero-content">
-    <div class="brand-tag">Clinic Catalyst</div>
-    <h1>We'll Review Your<br><span>Entire Business</span><br>For Free</h1>
-    <p class="subtitle">Your creative. Your copy. Your ads. Your strategy. Your systems. Two specialists who actually fill clinics will look at everything and give you real recommendations you can implement <em>this week</em> to get back your time and make more money.</p>
-    <a href="https://api.leadconnectorhq.com/widget/bookings/adsmarketingsystems" target="_blank" class="hero-cta" style="text-decoration: none;">Book Your Free Review</a>
-    <p class="hero-note">Takes 30 seconds to book. Zero obligation.</p>
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">AIOS Discovery</div>
+    <h1>Let's map your business before we build</h1>
+    <p>This isn't a generic intake form. The more detail you share here, the more effective we can be at delivering solutions and strategies with far more ease and precision.</p>
   </div>
 </div>
 
-<!-- ====== WHAT WE REVIEW ====== -->
-<div class="section dot-grid">
-  <div class="section-tag">What We Look At</div>
-  <h2>Five Areas. <span>Real Answers.</span></h2>
-  <div class="divider"></div>
-  <p>We don't send you a generic PDF. We look at your actual business and tell you exactly what's working, what's leaking money, and what to fix first.</p>
+<!-- Progress -->
+<div class="progress-bar" style="display:none">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">Step 1 of 6</div>
+</div>
 
-  <div class="review-grid">
-    <div class="review-card">
-      <div class="review-icon">&#127912;</div>
-      <div>
-        <h3>Creative</h3>
-        <p>Your visuals, your branding, your ad imagery. Are they stopping the scroll or blending into the feed? We'll tell you.</p>
+<!-- Form -->
+<div class="form-wrap">
+  <div class="steps" id="stepDots" style="display:none">
+    <div class="step-dot active"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+  </div>
+
+  <!-- LOOKUP: Returning leads skip the basics -->
+    <div class="form-section active" id="lookupSection">
+      <div class="section-title">Before we start</div>
+      <div class="section-sub">If you've already filled out a form with us, enter your email and we'll pull in what we know - so you don't have to repeat yourself.</div>
+
+      <div class="field">
+        <label>Your email address</label>
+        <input type="email" id="lookupEmail" placeholder="you@yourbusiness.com" onkeydown="if(event.key==='Enter'){event.preventDefault();lookupEmail();}">
+      </div>
+
+      <div id="lookupResult" style="display:none"></div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-back" onclick="skipLookup()">I'm new here</button>
+        <button type="button" class="btn-next" id="lookupBtn" onclick="lookupEmail()">Look me up</button>
       </div>
     </div>
-    <div class="review-card">
-      <div class="review-icon">&#9997;</div>
-      <div>
-        <h3>Copy</h3>
-        <p>Your website, your ads, your captions. Is your message landing with the right people or talking to nobody? We'll show you where the words are losing you money.</p>
+
+  <form id="aiosForm" novalidate>
+
+    <!-- STEP 1: About You -->
+    <div class="form-section" data-step="1">
+      <div class="section-title">About You & Your Business</div>
+      <div class="section-sub">The basics - so we know who we're talking to.</div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>First name <span class="required">*</span></label>
+          <input type="text" name="firstName" required placeholder="Kelly">
+          <div class="error-msg">Required</div>
+        </div>
+        <div class="field">
+          <label>Email <span class="required">*</span></label>
+          <input type="email" name="email" required placeholder="you@yourbusiness.com">
+          <div class="error-msg">Valid email required</div>
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="+61 400 000 000">
+        </div>
+        <div class="field">
+          <label>Business name <span class="required">*</span></label>
+          <input type="text" name="businessName" required placeholder="Your Business Pty Ltd">
+          <div class="error-msg">Required</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Website</label>
+        <input type="url" name="website" placeholder="https://yourbusiness.com.au">
+      </div>
+
+      <div class="field">
+        <label>In one sentence - what does your business do and who do you do it for? <span class="required">*</span></label>
+        <textarea name="businessDescription" required placeholder="e.g. We provide remedial massage and energy healing for women going through perimenopause in Brisbane's north side"></textarea>
+        <div class="error-msg">Required</div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>How long have you been running?</label>
+          <select name="yearsRunning">
+            <option value="">Select...</option>
+            <option value="under_1">Less than 1 year</option>
+            <option value="1_3">1 - 3 years</option>
+            <option value="3_5">3 - 5 years</option>
+            <option value="5_10">5 - 10 years</option>
+            <option value="10_plus">10+ years</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Annual revenue range <span class="required">*</span></label>
+          <select name="revenueRange" required>
+            <option value="">Select...</option>
+            <option value="under_100k">Under $100K</option>
+            <option value="100k_300k">$100K - $300K</option>
+            <option value="300k_500k">$300K - $500K</option>
+            <option value="500k_1m">$500K - $1M</option>
+            <option value="1m_3m">$1M - $3M</option>
+            <option value="3m_5m">$3M - $5M</option>
+            <option value="5m_plus">$5M+</option>
+          </select>
+          <div class="error-msg">Required</div>
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Team size</label>
+          <div class="hint">Include contractors, VAs, part-timers</div>
+          <input type="number" name="teamSize" min="1" max="500" placeholder="e.g. 4">
+        </div>
+        <div class="field">
+          <label>Industry</label>
+          <select name="industry">
+            <option value="">Select...</option>
+            <option value="health_wellness">Health & Wellness</option>
+            <option value="aesthetics">Aesthetics / Beauty</option>
+            <option value="allied_health">Allied Health</option>
+            <option value="professional_services">Professional Services</option>
+            <option value="coaching_consulting">Coaching / Consulting</option>
+            <option value="trades">Trades</option>
+            <option value="hospitality">Hospitality / Food</option>
+            <option value="ecommerce">E-commerce / Retail</option>
+            <option value="education">Education / Training</option>
+            <option value="creative">Creative / Agency</option>
+            <option value="ndis">NDIS Provider</option>
+            <option value="spiritual">Spiritual / Metaphysical</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <div class="btn-spacer"></div>
+        <button type="button" class="btn-next" onclick="nextStep(1)">Continue</button>
       </div>
     </div>
-    <div class="review-card">
-      <div class="review-icon">&#128200;</div>
-      <div>
-        <h3>Ads</h3>
-        <p>Your ad setup, targeting, offer structure. Are you spending to grow or spending to burn? We'll find out.</p>
+
+    <!-- STEP 2: Brand & Offers -->
+    <div class="form-section" data-step="2">
+      <div class="section-title">Your Brand & Offers</div>
+      <div class="section-sub">Understanding your offer structure helps us see where AI can amplify what's already working.</div>
+
+      <div class="field">
+        <label>What's your role day-to-day? <span class="required">*</span></label>
+        <div class="hint">Are you in the weeds doing everything, or more strategic? Both?</div>
+        <textarea name="dailyRole" required class="short" placeholder="e.g. I do all the client work, admin, social media, invoicing - basically everything except bookkeeping"></textarea>
+        <div class="error-msg">Required</div>
+      </div>
+
+      <div class="field">
+        <label>Do you run a single brand or multiple brands/business lines?</label>
+        <div class="radio-group" data-name="brandStructure">
+          <label><input type="radio" name="brandStructure" value="single"> Single brand</label>
+          <label><input type="radio" name="brandStructure" value="multi_related"> Multiple - related (same audience)</label>
+          <label><input type="radio" name="brandStructure" value="multi_separate"> Multiple - separate brands</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>List your products or services from lowest to highest price <span class="required">*</span></label>
+        <div class="hint">Include everything - free lead magnets, entry offers, core services, premium/VIP. Price each one if you can.</div>
+        <textarea name="offerLadder" required placeholder="e.g.&#10;Free: 10-min phone consult&#10;$89: Single remedial massage (60 min)&#10;$129: Energy healing session (90 min)&#10;$449: 5-pack massage bundle&#10;$1,200: 12-week transformation program"></textarea>
+        <div class="error-msg">Required</div>
+      </div>
+
+      <div class="field">
+        <label>Which of those are actively selling right now vs sitting dormant?</label>
+        <textarea name="activeOffers" class="short" placeholder="e.g. Massage and energy healing are the bread and butter. The 12-week program exists on the website but I haven't sold one in 6 months."></textarea>
+      </div>
+
+      <div class="field">
+        <label>How do customers typically move between your offers?</label>
+        <div class="hint">Is there a natural journey from first purchase to repeat/upsell?</div>
+        <textarea name="customerJourney" class="short" placeholder="e.g. Most people book a single massage, then come back weekly. Some ask about energy healing after a few sessions. Almost nobody finds the 12-week program."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-back" onclick="prevStep(2)">Back</button>
+        <button type="button" class="btn-next" onclick="nextStep(2)">Continue</button>
       </div>
     </div>
-    <div class="review-card">
-      <div class="review-icon">&#127919;</div>
-      <div>
-        <h3>Strategy</h3>
-        <p>Your offers, your pricing, your client journey from first click to repeat booking. We'll map the gaps you can't see from inside the business.</p>
+
+    <!-- STEP 3: Operations -->
+    <div class="form-section" data-step="3">
+      <div class="section-title">How Your Business Runs</div>
+      <div class="section-sub">This is where we find the gold. Be honest - there's no wrong answer.</div>
+
+      <div class="field">
+        <label>Who are your ideal clients? <span class="required">*</span></label>
+        <div class="hint">Demographics, what problem they're solving, what makes them your best clients</div>
+        <textarea name="idealCustomer" required class="short" placeholder="e.g. Women 35-55 in Brisbane, stressed professionals dealing with chronic tension and burnout, willing to invest in their health"></textarea>
+        <div class="error-msg">Required</div>
+      </div>
+
+      <div class="field">
+        <label>How do most clients find you?</label>
+        <div class="checkbox-group" data-name="leadSources">
+          <label><input type="checkbox" name="leadSources" value="referral"> Referrals</label>
+          <label><input type="checkbox" name="leadSources" value="google"> Google search</label>
+          <label><input type="checkbox" name="leadSources" value="social_organic"> Social media (organic)</label>
+          <label><input type="checkbox" name="leadSources" value="social_ads"> Social media (paid ads)</label>
+          <label><input type="checkbox" name="leadSources" value="google_ads"> Google Ads</label>
+          <label><input type="checkbox" name="leadSources" value="directory"> Directory / listing</label>
+          <label><input type="checkbox" name="leadSources" value="word_of_mouth"> Word of mouth</label>
+          <label><input type="checkbox" name="leadSources" value="events"> Events / networking</label>
+          <label><input type="checkbox" name="leadSources" value="content"> Content / blog / podcast</label>
+          <label><input type="checkbox" name="leadSources" value="other_lead"> Other</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What happens when a new lead comes in? <span class="required">*</span></label>
+        <div class="hint">Who responds? How fast? What's the process from enquiry to booking?</div>
+        <textarea name="leadProcess" required placeholder="e.g. They usually DM on Instagram or call. I reply when I can - sometimes same day, sometimes 2-3 days later. I send them my booking link manually."></textarea>
+        <div class="error-msg">Required</div>
+      </div>
+
+      <div class="field">
+        <label>How do you onboard a new client?</label>
+        <div class="hint">Steps from "yes" to first delivery</div>
+        <textarea name="onboarding" class="short" placeholder="e.g. They book online, get a confirmation email, fill out an intake form on arrival. That's it."></textarea>
+      </div>
+
+      <div class="field">
+        <label>How do you deliver your core service?</label>
+        <div class="hint">What does the actual delivery look like from your side?</div>
+        <textarea name="serviceDelivery" class="short" placeholder="e.g. In-person sessions at my clinic. I write notes after each session in a notebook. I manually send a rebooking reminder text a few days later."></textarea>
+      </div>
+
+      <div class="field">
+        <label>How do you follow up with past clients?</label>
+        <textarea name="followUp" class="short" placeholder="e.g. I don't really. Sometimes I'll post on Insta and people rebook, but there's no system. I know I should but I don't have time."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-back" onclick="prevStep(3)">Back</button>
+        <button type="button" class="btn-next" onclick="nextStep(3)">Continue</button>
       </div>
     </div>
-    <div class="review-card">
-      <div class="review-icon">&#9881;</div>
-      <div>
-        <h3>Systems</h3>
-        <p>Your follow-up process, your booking flow, your lead response time. The invisible stuff that's costing you clients while you're busy treating the ones you already have.</p>
+
+    <!-- STEP 4: Tech & Digital -->
+    <div class="form-section" data-step="4">
+      <div class="section-title">Your Tech & Digital Presence</div>
+      <div class="section-sub">Everything you pay for or use to run the business, plus the state of your digital footprint. No judgement - spreadsheets count.</div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Website platform</label>
+          <select name="websitePlatform">
+            <option value="">Select...</option>
+            <option value="wordpress">WordPress</option>
+            <option value="squarespace">Squarespace</option>
+            <option value="wix">Wix</option>
+            <option value="shopify">Shopify</option>
+            <option value="webflow">Webflow</option>
+            <option value="ghl">GoHighLevel</option>
+            <option value="custom">Custom built</option>
+            <option value="none">No website</option>
+            <option value="other_web">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Email system</label>
+          <div class="hint">Personal email + any marketing platform</div>
+          <input type="text" name="emailSystem" placeholder="e.g. Gmail + Mailchimp">
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>CRM / client management</label>
+          <input type="text" name="crm" placeholder="e.g. HubSpot, spreadsheet, notebook, nothing">
+        </div>
+        <div class="field">
+          <label>Booking / scheduling</label>
+          <input type="text" name="bookingTool" placeholder="e.g. Calendly, Acuity, Cliniko, phone">
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Payment processing</label>
+          <input type="text" name="paymentProcessor" placeholder="e.g. Stripe, Square, PayPal, bank transfer">
+        </div>
+        <div class="field">
+          <label>Accounting</label>
+          <input type="text" name="accounting" placeholder="e.g. Xero, MYOB, QuickBooks, my accountant">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Social media handles</label>
+        <div class="hint">Drop your main handles so we can look at your digital presence before the call</div>
+        <textarea name="socialHandles" class="short" placeholder="e.g. Instagram: @yourbiz, Facebook: Your Business Name, LinkedIn: /in/yourname"></textarea>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Google Business Profile</label>
+          <div class="radio-group" data-name="googleBusiness">
+            <label><input type="radio" name="googleBusiness" value="yes"> Yes</label>
+            <label><input type="radio" name="googleBusiness" value="no"> No</label>
+            <label><input type="radio" name="googleBusiness" value="not_sure"> Not sure</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Website last updated</label>
+          <select name="websiteLastUpdated">
+            <option value="">Select...</option>
+            <option value="this_month">This month</option>
+            <option value="this_quarter">This quarter</option>
+            <option value="this_year">This year</option>
+            <option value="1_2_years">1-2 years ago</option>
+            <option value="3_plus_years">3+ years ago</option>
+            <option value="not_sure">Not sure</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Do you have analytics on your website?</label>
+        <div class="hint">Google Analytics, Hotjar, Facebook Pixel, anything that tracks visitors</div>
+        <div class="radio-group" data-name="hasAnalytics">
+          <label><input type="radio" name="hasAnalytics" value="yes"> Yes - I check it regularly</label>
+          <label><input type="radio" name="hasAnalytics" value="have_not_check"> I think so but I never check it</label>
+          <label><input type="radio" name="hasAnalytics" value="no"> No</label>
+          <label><input type="radio" name="hasAnalytics" value="not_sure"> Not sure</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What other tools do you pay for?</label>
+        <div class="hint">Project management, social scheduling, design tools, anything else</div>
+        <textarea name="otherTools" class="short" placeholder="e.g. Canva Pro, Later for social scheduling, Asana for task management, Zoom for calls"></textarea>
+      </div>
+
+      <div class="field">
+        <label>E-signature / contract tool</label>
+        <div class="hint">How do you send proposals or contracts for signing?</div>
+        <select name="esignTool">
+          <option value="">Select...</option>
+          <option value="docusign">DocuSign</option>
+          <option value="pandadoc">PandaDoc</option>
+          <option value="hellosign">HelloSign / Dropbox Sign</option>
+          <option value="adobe_sign">Adobe Sign</option>
+          <option value="pdf_email">PDF via email (manual)</option>
+          <option value="none">Don't use one</option>
+          <option value="other_esign">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Do you use Telegram?</label>
+        <div class="hint">Your AI system delivers morning briefings and alerts via Telegram.</div>
+        <div class="radio-group" data-name="usesTelegram">
+          <label><input type="radio" name="usesTelegram" value="yes"> Yes - I use it</label>
+          <label><input type="radio" name="usesTelegram" value="willing"> No but I'm happy to try</label>
+          <label><input type="radio" name="usesTelegram" value="no"> No and I'd rather not</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How many emails do you handle per day?</label>
+        <div class="hint">Rough estimate - helps us scope your email agent.</div>
+        <select name="dailyEmailVolume">
+          <option value="">Select...</option>
+          <option value="under_10">Under 10</option>
+          <option value="10_30">10 - 30</option>
+          <option value="30_50">30 - 50</option>
+          <option value="50_100">50 - 100</option>
+          <option value="100_plus">100+</option>
+        </select>
+      </div>
+
+      <!-- NDIS-specific section - only shows when industry = ndis -->
+      <div id="ndisSection" style="display:none; margin-top: 8px; padding: 28px; background: #F5EDE0; border-radius: 12px; border-left: 3px solid #B7634B;">
+        <div style="font-size: 13px; font-weight: 600; color: #B7634B; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px;">NDIS Provider Details</div>
+        <div class="hint" style="margin-bottom: 20px;">These questions help us understand exactly how your NDIS business runs day-to-day so we can find the real time and energy drains.</div>
+
+        <!-- Your Services -->
+        <div class="field">
+          <label>What NDIS services do you provide?</label>
+          <div class="checkbox-group" data-name="ndisServiceTypes">
+            <label><input type="checkbox" name="ndisServiceTypes" value="support_coordination"> Support Coordination</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="plan_management"> Plan Management</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="daily_activities"> Assistance with Daily Life</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="community"> Community Participation</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="sil"> Supported Independent Living (SIL)</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="sda"> Specialist Disability Accommodation (SDA)</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="therapeutic"> Therapeutic Supports</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="behaviour"> Behaviour Support</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="early_intervention"> Early Childhood / Early Intervention</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="employment"> Employment Support</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="transport"> Transport</label>
+            <label><input type="checkbox" name="ndisServiceTypes" value="consumables"> Assistive Tech / Consumables</label>
+          </div>
+        </div>
+
+        <!-- Scale -->
+        <div class="row-2">
+          <div class="field">
+            <label>How many active participants?</label>
+            <input type="text" name="ndisParticipantCount" placeholder="e.g. 45">
+          </div>
+          <div class="field">
+            <label>Total team size (all roles)</label>
+            <input type="text" name="ndisStaffCount" placeholder="e.g. 3 staff + 1 admin VA">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Who does what in your team?</label>
+          <div class="hint">Support workers, coordinators, team leaders, admin, management - and what do YOU personally handle?</div>
+          <textarea name="ndisTeamStructure" class="short" placeholder="e.g. I do all the coordination, case notes, and emails. 3 support workers do shifts. JC (VA) handles invoicing and filing."></textarea>
+        </div>
+
+        <!-- Daily Admin & Documentation -->
+        <div style="font-size: 12px; font-weight: 600; color: #B7634B; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 12px;">Admin & Documentation</div>
+
+        <div class="field">
+          <label>How do you handle progress notes / case notes?</label>
+          <div class="hint">Who writes them, how often, where do they go? Be specific about the actual steps.</div>
+          <textarea name="ndisProgressNotes" placeholder="e.g. I record voice notes on Speak App after every call, then copy into ChatGPT to format, then paste into SharePoint. Takes 15-20 mins each time, 6-8 times a day."></textarea>
+        </div>
+
+        <div class="field">
+          <label>What forms and documents do you create regularly?</label>
+          <div class="hint">Service agreements, plan review reports, change of situation letters, incident reports, NDIS justifications - tick everything you write manually</div>
+          <div class="checkbox-group" data-name="ndisDocuments">
+            <label><input type="checkbox" name="ndisDocuments" value="service_agreements"> Service agreements</label>
+            <label><input type="checkbox" name="ndisDocuments" value="plan_review_reports"> Plan review / progress reports</label>
+            <label><input type="checkbox" name="ndisDocuments" value="change_situation"> Change of situation letters</label>
+            <label><input type="checkbox" name="ndisDocuments" value="sc_justifications"> Support coordinator justifications</label>
+            <label><input type="checkbox" name="ndisDocuments" value="incident_reports"> Incident reports</label>
+            <label><input type="checkbox" name="ndisDocuments" value="risk_assessments"> Risk assessments</label>
+            <label><input type="checkbox" name="ndisDocuments" value="behaviour_support_plans"> Behaviour support plans</label>
+            <label><input type="checkbox" name="ndisDocuments" value="participant_goals"> Goal tracking / evidence summaries</label>
+            <label><input type="checkbox" name="ndisDocuments" value="handover_notes"> Shift handover notes</label>
+            <label><input type="checkbox" name="ndisDocuments" value="family_updates"> Participant / family updates</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>How long does documentation take you per day?</label>
+          <select name="ndisDocTime">
+            <option value="">Select...</option>
+            <option value="under_1hr">Under 1 hour</option>
+            <option value="1_2hrs">1 - 2 hours</option>
+            <option value="2_4hrs">2 - 4 hours</option>
+            <option value="4_plus">4+ hours (it never ends)</option>
+          </select>
+        </div>
+
+        <!-- Invoicing & Claims -->
+        <div style="font-size: 12px; font-weight: 600; color: #B7634B; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 12px;">Invoicing & Claims</div>
+
+        <div class="field">
+          <label>What plan types do your participants have?</label>
+          <div class="checkbox-group" data-name="ndisPlanTypes">
+            <label><input type="checkbox" name="ndisPlanTypes" value="ndia_managed"> NDIA-managed (you claim through the portal)</label>
+            <label><input type="checkbox" name="ndisPlanTypes" value="plan_managed"> Plan-managed (you invoice the plan manager)</label>
+            <label><input type="checkbox" name="ndisPlanTypes" value="self_managed"> Self-managed (you invoice the participant)</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Walk me through how invoicing actually works for you right now</label>
+          <div class="hint">Who does it, how often, what system, and where does it go wrong?</div>
+          <textarea name="ndisInvoicing" placeholder="e.g. I cross-check hours against the service agreement, match to the Price Guide line items, create invoices in Xero, then submit through the portal or email to plan managers. It takes a full day every fortnight and claims still get rejected for typos."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Do you experience claim rejections?</label>
+          <select name="ndisClaimRejections">
+            <option value="">Select...</option>
+            <option value="rarely">Rarely - most go through fine</option>
+            <option value="sometimes">Sometimes - maybe 1 in 10</option>
+            <option value="often">Often - it's a constant headache</option>
+            <option value="na">N/A - I don't submit claims directly</option>
+          </select>
+        </div>
+
+        <!-- Staff & Scheduling -->
+        <div style="font-size: 12px; font-weight: 600; color: #B7634B; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 12px;">Staff & Scheduling</div>
+
+        <div class="field">
+          <label>How do you manage rosters and schedules?</label>
+          <div class="checkbox-group" data-name="ndisRostering">
+            <label><input type="checkbox" name="ndisRostering" value="shiftcare_roster"> ShiftCare</label>
+            <label><input type="checkbox" name="ndisRostering" value="deputy"> Deputy</label>
+            <label><input type="checkbox" name="ndisRostering" value="tanda"> Tanda</label>
+            <label><input type="checkbox" name="ndisRostering" value="humanforce"> Humanforce</label>
+            <label><input type="checkbox" name="ndisRostering" value="founduu"> Found U</label>
+            <label><input type="checkbox" name="ndisRostering" value="rotawiz"> RotaWiz</label>
+            <label><input type="checkbox" name="ndisRostering" value="ms_planner"> Microsoft Planner / Outlook</label>
+            <label><input type="checkbox" name="ndisRostering" value="google_calendar"> Google Calendar</label>
+            <label><input type="checkbox" name="ndisRostering" value="manual_roster"> Spreadsheet / whiteboard / in my head</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>How do you communicate with your team in the field?</label>
+          <div class="checkbox-group" data-name="ndisTeamComms">
+            <label><input type="checkbox" name="ndisTeamComms" value="phone_calls"> Phone calls</label>
+            <label><input type="checkbox" name="ndisTeamComms" value="sms"> SMS / text</label>
+            <label><input type="checkbox" name="ndisTeamComms" value="whatsapp"> WhatsApp group</label>
+            <label><input type="checkbox" name="ndisTeamComms" value="teams"> Microsoft Teams</label>
+            <label><input type="checkbox" name="ndisTeamComms" value="slack"> Slack</label>
+            <label><input type="checkbox" name="ndisTeamComms" value="email"> Email</label>
+            <label><input type="checkbox" name="ndisTeamComms" value="app_messaging"> In-app messaging (ShiftCare etc.)</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>What's your biggest staffing headache?</label>
+          <div class="hint">Last-minute cancellations? Finding replacement workers? Training new staff? Keeping certifications current?</div>
+          <textarea name="ndisStaffPain" class="short" placeholder="e.g. Workers call in sick at 6am and I spend 2 hours finding cover. Also can never remember whose first aid cert is about to expire."></textarea>
+        </div>
+
+        <!-- Compliance & Tracking -->
+        <div style="font-size: 12px; font-weight: 600; color: #B7634B; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 12px;">Compliance & Tracking</div>
+
+        <div class="field">
+          <label>How do you track worker compliance? (screening, certs, training)</label>
+          <div class="hint">NDIS Worker Screening, police checks, WWCC, first aid, manual handling, restrictive practices training - where is all this tracked?</div>
+          <textarea name="ndisComplianceTracking" class="short" placeholder="e.g. Spreadsheet with expiry dates. I check it when I remember. We got flagged in our last audit for two expired WWCCs."></textarea>
+        </div>
+
+        <div class="field">
+          <label>How audit-ready do you feel right now?</label>
+          <select name="ndisAuditReady">
+            <option value="">Select...</option>
+            <option value="ready">Confident - everything is documented and current</option>
+            <option value="mostly">Mostly there - a few gaps I know about</option>
+            <option value="nervous">Nervous - I'd need a few weeks to pull it together</option>
+            <option value="not_ready">Not ready - it would be a scramble</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>What compliance tasks keep you up at night?</label>
+          <div class="checkbox-group" data-name="ndisCompliance">
+            <label><input type="checkbox" name="ndisCompliance" value="worker_screening"> Worker screening / cert expiry tracking</label>
+            <label><input type="checkbox" name="ndisCompliance" value="incident_mgmt"> Incident reports and investigations</label>
+            <label><input type="checkbox" name="ndisCompliance" value="quality_auditing"> Audit preparation</label>
+            <label><input type="checkbox" name="ndisCompliance" value="sil_reporting"> SIL / shift reporting</label>
+            <label><input type="checkbox" name="ndisCompliance" value="restrictive_practices"> Restrictive practices register</label>
+            <label><input type="checkbox" name="ndisCompliance" value="price_guide"> Keeping up with Price Guide changes</label>
+            <label><input type="checkbox" name="ndisCompliance" value="practice_standards"> NDIS Practice Standards documentation</label>
+          </div>
+        </div>
+
+        <!-- Participant Management -->
+        <div style="font-size: 12px; font-weight: 600; color: #B7634B; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 12px;">Participant Management</div>
+
+        <div class="field">
+          <label>Participant management / NDIS software</label>
+          <div class="checkbox-group" data-name="ndisTools">
+            <label><input type="checkbox" name="ndisTools" value="shiftcare"> ShiftCare</label>
+            <label><input type="checkbox" name="ndisTools" value="supportability"> SupportAbility</label>
+            <label><input type="checkbox" name="ndisTools" value="lumary"> Lumary</label>
+            <label><input type="checkbox" name="ndisTools" value="myp"> MYP</label>
+            <label><input type="checkbox" name="ndisTools" value="brevity"> Brevity</label>
+            <label><input type="checkbox" name="ndisTools" value="commcare"> Comm.care</label>
+            <label><input type="checkbox" name="ndisTools" value="iinsight"> iinsight</label>
+            <label><input type="checkbox" name="ndisTools" value="careview"> CareView</label>
+            <label><input type="checkbox" name="ndisTools" value="visualcare"> Visual Care</label>
+            <label><input type="checkbox" name="ndisTools" value="hubhello"> HubHello</label>
+            <label><input type="checkbox" name="ndisTools" value="vertex360"> Vertex360</label>
+            <label><input type="checkbox" name="ndisTools" value="caremaster"> CareMaster</label>
+            <label><input type="checkbox" name="ndisTools" value="goodhuman"> GoodHuman</label>
+            <label><input type="checkbox" name="ndisTools" value="proda"> PRODA / myplace Portal</label>
+            <label><input type="checkbox" name="ndisTools" value="none_ndis"> None - spreadsheets / manual</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Walk me through participant intake - from first contact to service agreement signed</label>
+          <div class="hint">What are the actual steps, how long does it take, and what's manual vs automated?</div>
+          <textarea name="ndisIntakeProcess" placeholder="e.g. Referral comes by email or phone. I do an initial call, then a meet and greet. Service agreement is a Word doc I edit each time. Whole process takes 2-3 weeks because I'm chasing signatures and plan details."></textarea>
+        </div>
+
+        <div class="field">
+          <label>How do you handle plan reviews and transitions?</label>
+          <div class="hint">When a participant's plan gets reviewed - what happens? Do you scramble to pull evidence together?</div>
+          <textarea name="ndisPlanReviews" class="short" placeholder="e.g. I get 2 weeks notice, then spend hours pulling case notes together into a report. Half the time I'm hunting for evidence I know I wrote somewhere."></textarea>
+        </div>
+
+        <div class="field">
+          <label>How do you communicate with participants and their families?</label>
+          <div class="checkbox-group" data-name="ndisParticipantComms">
+            <label><input type="checkbox" name="ndisParticipantComms" value="phone"> Phone calls</label>
+            <label><input type="checkbox" name="ndisParticipantComms" value="sms"> SMS</label>
+            <label><input type="checkbox" name="ndisParticipantComms" value="email"> Email</label>
+            <label><input type="checkbox" name="ndisParticipantComms" value="whatsapp"> WhatsApp</label>
+            <label><input type="checkbox" name="ndisParticipantComms" value="app"> In-app messaging</label>
+            <label><input type="checkbox" name="ndisParticipantComms" value="face_to_face"> Face-to-face only</label>
+          </div>
+        </div>
+
+        <!-- The Real Drains -->
+        <div style="font-size: 12px; font-weight: 600; color: #B7634B; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 12px;">The Real Drains</div>
+
+        <div class="field">
+          <label>Which of these eat the most of your time? Pick your top 3.</label>
+          <div class="checkbox-group" data-name="ndisTimeDrains">
+            <label><input type="checkbox" name="ndisTimeDrains" value="case_notes"> Writing case notes / progress notes</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="email_triage"> Email triage and replies</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="invoicing"> Invoicing and claims</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="rostering"> Rostering and shift coverage</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="compliance"> Compliance paperwork and cert tracking</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="plan_reports"> Plan review reports and evidence gathering</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="intake"> Participant intake and onboarding</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="staff_mgmt"> Staff management and communication</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="forms_docs"> Creating and updating forms and documents</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="family_comms"> Participant / family communication</label>
+            <label><input type="checkbox" name="ndisTimeDrains" value="portal"> PRODA portal / NDIA system issues</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>What would change for you if these were handled?</label>
+          <div class="hint">More billable hours? Leave on time? Stop working weekends? Actually take a holiday?</div>
+          <textarea name="ndisBiggestPain" class="short" placeholder="e.g. I could actually focus on my participants instead of drowning in admin. I haven't had a weekend off in months."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Anything else we should know about how your NDIS business runs?</label>
+          <textarea name="ndisOtherTools" class="short" placeholder="e.g. Other tools, upcoming audits, specific pain points, things you've tried that didn't work..."></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Do you use any AI tools already?</label>
+        <div class="checkbox-group" data-name="aiTools">
+          <label><input type="checkbox" name="aiTools" value="chatgpt"> ChatGPT</label>
+          <label><input type="checkbox" name="aiTools" value="claude"> Claude</label>
+          <label><input type="checkbox" name="aiTools" value="canva_ai"> Canva AI</label>
+          <label><input type="checkbox" name="aiTools" value="grammarly"> Grammarly</label>
+          <label><input type="checkbox" name="aiTools" value="midjourney"> Midjourney / DALL-E</label>
+          <label><input type="checkbox" name="aiTools" value="copilot"> Microsoft Copilot</label>
+          <label><input type="checkbox" name="aiTools" value="gemini"> Google Gemini</label>
+          <label><input type="checkbox" name="aiTools" value="none_ai"> None</label>
+          <label><input type="checkbox" name="aiTools" value="other_ai"> Other</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What's your relationship with technology?</label>
+        <div class="radio-group" data-name="techComfort">
+          <label><input type="radio" name="techComfort" value="loves_it"> Love it - I'm always trying new tools</label>
+          <label><input type="radio" name="techComfort" value="tolerates_it"> Tolerate it - I use what I have to</label>
+          <label><input type="radio" name="techComfort" value="hates_it"> Rather not - just make it work for me</label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-back" onclick="prevStep(4)">Back</button>
+        <button type="button" class="btn-next" onclick="nextStep(4)">Continue</button>
       </div>
     </div>
-  </div>
+
+    <!-- STEP 5: Funnels & Nurture -->
+    <div class="form-section" data-step="5">
+      <div class="section-title">Funnels & Nurture Systems</div>
+      <div class="section-sub">This is where most businesses leave thousands on the table. Don't worry if the answer is "we don't have one" - that's useful information.</div>
+
+      <div class="field">
+        <label>Do you have any active funnels or lead magnets?</label>
+        <div class="hint">Things like free downloads, quiz funnels, webinar signups, discount codes for first purchase</div>
+        <textarea name="activeFunnels" placeholder="e.g. I have a free PDF guide on my website but I'm not sure anyone downloads it. I tried a Facebook ad to a landing page 6 months ago but turned it off."></textarea>
+      </div>
+
+      <div class="field">
+        <label>What happens after someone signs up or opts in to something?</label>
+        <div class="hint">Is there an email sequence? A follow-up call? Nothing?</div>
+        <textarea name="postOptIn" class="short" placeholder="e.g. They get the PDF and that's it. No follow-up. I know I should have an email sequence but I've never built one."></textarea>
+      </div>
+
+      <div class="field">
+        <label>What happens after someone buys for the first time?</label>
+        <div class="hint">Confirmation email, welcome sequence, onboarding, rebooking prompts?</div>
+        <textarea name="postPurchase" class="short" placeholder="e.g. They get a booking confirmation from Cliniko. I send a thank you text manually. No automated follow-up or rebooking reminders."></textarea>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Email list size</label>
+          <select name="emailListSize">
+            <option value="">Select...</option>
+            <option value="none">No email list</option>
+            <option value="under_100">Under 100</option>
+            <option value="100_500">100 - 500</option>
+            <option value="500_2000">500 - 2,000</option>
+            <option value="2000_5000">2,000 - 5,000</option>
+            <option value="5000_plus">5,000+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>How often do you email your list?</label>
+          <select name="emailFrequency">
+            <option value="">Select...</option>
+            <option value="never">Never / no list</option>
+            <option value="rarely">Rarely (a few times a year)</option>
+            <option value="monthly">Monthly-ish</option>
+            <option value="fortnightly">Every 2 weeks</option>
+            <option value="weekly">Weekly</option>
+            <option value="multiple_week">Multiple times per week</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What social platforms are you active on?</label>
+        <div class="checkbox-group" data-name="socialPlatforms">
+          <label><input type="checkbox" name="socialPlatforms" value="instagram"> Instagram</label>
+          <label><input type="checkbox" name="socialPlatforms" value="facebook"> Facebook</label>
+          <label><input type="checkbox" name="socialPlatforms" value="linkedin"> LinkedIn</label>
+          <label><input type="checkbox" name="socialPlatforms" value="tiktok"> TikTok</label>
+          <label><input type="checkbox" name="socialPlatforms" value="youtube"> YouTube</label>
+          <label><input type="checkbox" name="socialPlatforms" value="pinterest"> Pinterest</label>
+          <label><input type="checkbox" name="socialPlatforms" value="none_social"> None</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Do you have a content strategy or content calendar?</label>
+        <div class="radio-group" data-name="contentStrategy">
+          <label><input type="radio" name="contentStrategy" value="yes_active"> Yes - actively following one</label>
+          <label><input type="radio" name="contentStrategy" value="had_one"> Had one but fell off</label>
+          <label><input type="radio" name="contentStrategy" value="no"> No</label>
+          <label><input type="radio" name="contentStrategy" value="whats_that"> What's that?</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Is your branding consistent across your website, socials, and emails?</label>
+        <div class="radio-group" data-name="brandConsistency">
+          <label><input type="radio" name="brandConsistency" value="yes"> Yes - same look, feel, and voice everywhere</label>
+          <label><input type="radio" name="brandConsistency" value="mostly"> Mostly - a few things are off</label>
+          <label><input type="radio" name="brandConsistency" value="not_really"> Not really</label>
+          <label><input type="radio" name="brandConsistency" value="no_idea"> No idea</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Do you track where your leads actually come from?</label>
+        <div class="radio-group" data-name="leadTracking">
+          <label><input type="radio" name="leadTracking" value="yes"> Yes - I know exactly</label>
+          <label><input type="radio" name="leadTracking" value="sometimes"> Sometimes - I ask but don't log it</label>
+          <label><input type="radio" name="leadTracking" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Do you have any automations running right now?</label>
+        <div class="hint">Email sequences, chatbots, auto-replies, automatic invoicing, social scheduling, anything</div>
+        <div class="radio-group" data-name="currentAutomations">
+          <label><input type="radio" name="currentAutomations" value="several"> Yes - several things run without me</label>
+          <label><input type="radio" name="currentAutomations" value="a_few"> A few basics</label>
+          <label><input type="radio" name="currentAutomations" value="none"> Nothing - everything is manual</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Any tracking or reporting you do regularly?</label>
+        <div class="hint">Revenue tracking, lead pipeline, KPIs, ad performance, anything</div>
+        <textarea name="reporting" class="short" placeholder="e.g. I check my bank account. My accountant sends quarterly numbers. That's about it."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-back" onclick="prevStep(5)">Back</button>
+        <button type="button" class="btn-next" onclick="nextStep(5)">Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 6: Pain Points & Vision -->
+    <div class="form-section" data-step="6">
+      <div class="section-title">Pain Points & Your Vision</div>
+      <div class="section-sub">The real stuff. What's not working and what do you want instead?</div>
+
+      <div class="field">
+        <label>What's the biggest bottleneck in your business right now? <span class="required">*</span></label>
+        <textarea name="bottleneck" required placeholder="e.g. I'm the bottleneck. Everything goes through me - bookings, enquiries, content, invoicing. If I stop, everything stops."></textarea>
+        <div class="error-msg">Required</div>
+      </div>
+
+      <div class="field">
+        <label>Where are you losing money or leaving it on the table?</label>
+        <textarea name="moneyLeaks" class="short" placeholder="e.g. People enquire and I take too long to reply. Clients drop off after 3-4 sessions because there's no retention system. I never upsell."></textarea>
+      </div>
+
+      <div class="field">
+        <label>What manual process drives you crazy?</label>
+        <textarea name="manualPain" class="short" placeholder="e.g. Sending individual rebooking reminders. Manually posting to Instagram. Writing the same email replies over and over."></textarea>
+      </div>
+
+      <div class="field">
+        <label>If you could wave a magic wand and fix ONE thing in your business, what would it be? <span class="required">*</span></label>
+        <textarea name="magicWand" required class="short" placeholder="e.g. I want clients to book, pay, get onboarded, and come back automatically without me chasing anyone."></textarea>
+        <div class="error-msg">Required</div>
+      </div>
+
+      <div class="field">
+        <label>Have you tried to solve any of these problems before?</label>
+        <textarea name="previousAttempts" class="short" placeholder="e.g. I bought a CRM last year but never set it up. I hired a VA but she left and I didn't replace her. Tried ChatGPT but couldn't get useful results."></textarea>
+      </div>
+
+      <div class="field">
+        <label>What made you interested in AI for your business?</label>
+        <textarea name="aiInterest" class="short" placeholder="e.g. I saw someone on LinkedIn running their whole business with AI agents and it blew my mind. I want that."></textarea>
+      </div>
+
+      <div class="field">
+        <label>What would success look like 90 days from now? <span class="required">*</span></label>
+        <textarea name="ninetyDayVision" required placeholder="e.g. Leads coming in and being followed up automatically. Content going out every day without me writing it. My mornings free to do client work instead of admin."></textarea>
+        <div class="error-msg">Required</div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Are you the decision-maker for this investment?</label>
+          <select name="decisionMaker">
+            <option value="">Select...</option>
+            <option value="yes">Yes - I decide</option>
+            <option value="partner">Need to discuss with business partner</option>
+            <option value="board">Needs board / management approval</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Timeline - when do you want this running?</label>
+          <select name="timeline">
+            <option value="">Select...</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1_month">Within a month</option>
+            <option value="1_3_months">1 - 3 months</option>
+            <option value="exploring">Just exploring for now</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Investment readiness <span class="required">*</span></label>
+        <div class="hint">On a scale of 1-10, how ready are you to invest in AI systems for your business?</div>
+        <div class="scale-wrap" id="readinessScale">
+          <button type="button" class="scale-btn" data-val="1">1</button>
+          <button type="button" class="scale-btn" data-val="2">2</button>
+          <button type="button" class="scale-btn" data-val="3">3</button>
+          <button type="button" class="scale-btn" data-val="4">4</button>
+          <button type="button" class="scale-btn" data-val="5">5</button>
+          <button type="button" class="scale-btn" data-val="6">6</button>
+          <button type="button" class="scale-btn" data-val="7">7</button>
+          <button type="button" class="scale-btn" data-val="8">8</button>
+          <button type="button" class="scale-btn" data-val="9">9</button>
+          <button type="button" class="scale-btn" data-val="10">10</button>
+        </div>
+        <div class="scale-labels">
+          <span>Not ready yet</span>
+          <span>Let's go</span>
+        </div>
+        <input type="hidden" name="readiness" id="readinessInput" required>
+        <div class="error-msg">Please select a readiness level</div>
+      </div>
+
+      <div class="field">
+        <label>How hands-on do you want to be?</label>
+        <div class="radio-group" data-name="handsOn">
+          <label><input type="radio" name="handsOn" value="teach_me"> I want to understand how it works</label>
+          <label><input type="radio" name="handsOn" value="just_build"> Just build it - I'll use it, you maintain it</label>
+          <label><input type="radio" name="handsOn" value="mix"> A bit of both</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Anything else you want us to know?</label>
+        <textarea name="additionalNotes" class="short" placeholder="Anything at all - context helps."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-back" onclick="prevStep(6)">Back</button>
+        <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">Submit Discovery Form</button>
+      </div>
+    </div>
+
+    <!-- Offer Reveal -->
+    <div class="form-section thank-you" data-step="done">
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2>Okay, your systems are scouted.</h2>
+      <p>Time for the next step. If you haven't already booked your AIOS Scoping Session, click the button below.</p>
+
+      <a href="https://api.leadconnectorhq.com/widget/bookings/awsenquiry" class="btn-book" target="_blank">Book Your AIOS Scoping Session</a>
+      <p class="sub-note">We'll use everything you've shared here to come prepared with a plan specific to your business.</p>
+    </div>
+
+  </form>
 </div>
 
-<!-- ====== OUTCOMES ====== -->
-<div class="section dot-grid">
-  <div class="section-tag">What You Walk Away With</div>
-  <h2>Recommendations That <span>Actually Work</span></h2>
-  <div class="divider"></div>
-  <p>This isn't theory. Every recommendation we give you is something you can put in place immediately. No jargon. No fluff. Just what to do, why it matters, and exactly how to do it.</p>
-
-  <div class="outcome-strip">
-    <div class="outcome-box">
-      <div class="big">TIME</div>
-      <p>Stop leaking energy into things that should run themselves. Get hours back every week.</p>
-    </div>
-    <div class="outcome-box">
-      <div class="big">MONEY</div>
-      <p>Stop paying for leads that never book. Turn what you're already spending into real revenue.</p>
-    </div>
-  </div>
-
-  <div style="margin-top: 28px; padding: 24px; border-left: 3px solid var(--accent); background: var(--accent-soft);">
-    <p style="color: var(--white-90); font-weight: 500;">Most clinics are sitting on $20K - $100K in revenue they're already paying to generate but never collecting. We find it. We show you how to get it. You decide what to do next.</p>
-  </div>
+<div class="footer">
+  <a href="https://aiwithsoul.com.au">AI with Soul</a> &middot; Built different, on purpose.
 </div>
 
-<!-- ====== HOW IT WORKS ====== -->
-<div class="section dot-grid">
-  <div class="section-tag">How It Works</div>
-  <h2>Three Steps. <span>Done.</span></h2>
-  <div class="divider"></div>
+<script>
+const TOTAL_STEPS = 6;
+let currentStep = 1;
+let readinessVal = 0;
+let prefillData = null;
 
-  <div class="step-row">
-    <div class="step-num">1</div>
-    <div>
-      <h3>Book your session</h3>
-      <p>Click the button below and pick a time that works. Takes 30 seconds.</p>
-    </div>
-  </div>
-  <div class="step-row">
-    <div class="step-num">2</div>
-    <div>
-      <h3>We review everything</h3>
-      <p>We look at your creative, copy, ads, strategy and systems before we even get on a call. You'll get honest, specific feedback from two people who do this every day.</p>
-    </div>
-  </div>
-  <div class="step-row">
-    <div class="step-num">3</div>
-    <div>
-      <h3>You get your recommendations</h3>
-      <p>Real fixes. Prioritised by impact. Things you can action this week to get back your time and start making more money from the clients you're already attracting.</p>
-    </div>
-  </div>
-</div>
+// --- NDIS section toggle ---
+document.querySelector('[name="industry"]').addEventListener('change', function() {
+  var ndis = document.getElementById('ndisSection');
+  if (this.value === 'ndis') {
+    ndis.style.display = 'block';
+  } else {
+    ndis.style.display = 'none';
+  }
+});
 
-<!-- ====== WHO WE ARE ====== -->
-<div class="section dot-grid">
-  <div class="section-tag">Who We Are</div>
-  <h2>Built By People Who <span>Fill Clinics</span></h2>
-  <div class="divider"></div>
+// --- Step navigation ---
+function showStep(n) {
+  document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+  const target = document.querySelector(`.form-section[data-step="${n}"]`);
+  if (target) target.classList.add('active');
 
-  <div class="about-row">
-    <img src="kelly-alicia-abm.png" alt="Kelly Wotherspoon and Alicia Hagen at Aesthetics Business Masters" class="about-photo">
-    <div class="about-text">
-      <p><strong>Alicia Hagen</strong> has spent over a decade in clinic marketing - building the offers, running the ads, and creating the content that gets people through the door.</p>
-      <p style="margin-top: 12px;"><strong>Kelly Wotherspoon</strong> builds the AI systems and automations that make sure those leads actually convert - faster responses, smarter follow-up, zero dropped balls.</p>
-      <p style="margin-top: 12px;">Together, we handle both sides: <strong>getting the leads and turning them into revenue.</strong></p>
-    </div>
-  </div>
-</div>
+  // Update dots
+  document.querySelectorAll('.step-dot').forEach((dot, i) => {
+    dot.classList.remove('active', 'done');
+    if (i + 1 === n) dot.classList.add('active');
+    else if (i + 1 < n) dot.classList.add('done');
+  });
 
-<!-- ====== CTA ====== -->
-<div class="form-section dot-grid" id="book">
-  <div style="display: inline-block; padding: 10px 28px; border: 2px solid var(--accent); background: var(--accent-soft); margin-bottom: 32px;">
-    <span style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--accent);">Clinic Catalyst</span>
-  </div>
+  // Update progress
+  const pct = Math.round(((n - 1) / TOTAL_STEPS) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `Step ${n} of ${TOTAL_STEPS}`;
 
-  <h2 style="margin-bottom: 8px;">Book Your <span>Free Review</span></h2>
-  <div style="width: 60px; height: 3px; background: var(--accent); margin: 16px auto 24px;"></div>
-  <p style="max-width: 480px; margin: 0 auto 32px; text-align: center;">30 minutes with two specialists who actually fill clinics. Zero obligation.</p>
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  currentStep = n;
+}
 
-  <a href="https://api.leadconnectorhq.com/widget/bookings/adsmarketingsystems" target="_blank" class="hero-cta" style="display: inline-block; text-decoration: none; padding: 20px 60px;">Book Your Free 30-Minute Review</a>
-  <p style="font-size: 13px; color: var(--white-40); margin-top: 16px;">Pick a time that works for you. We'll do the rest.</p>
-</div>
+function nextStep(from) {
+  if (!validateStep(from)) return;
+  showStep(from + 1);
+}
 
-<!-- ====== FOOTER ====== -->
-<div style="padding: 24px 32px; text-align: center; border-top: 1px solid var(--white-10);">
-  <p style="font-size: 13px; color: var(--white-40);">Alicia Hagen & Kelly Wotherspoon</p>
-</div>
+function prevStep(from) {
+  showStep(from - 1);
+}
 
+// --- Validation ---
+function validateStep(step) {
+  const section = document.querySelector(`.form-section[data-step="${step}"]`);
+  const required = section.querySelectorAll('[required]');
+  let valid = true;
+
+  required.forEach(el => {
+    const field = el.closest('.field');
+    if (!field) return;
+
+    if (el.type === 'hidden' && el.id === 'readinessInput') {
+      if (!readinessVal) {
+        field.classList.add('error');
+        valid = false;
+      } else {
+        field.classList.remove('error');
+      }
+    } else if (!el.value.trim()) {
+      field.classList.add('error');
+      valid = false;
+    } else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
+      field.classList.add('error');
+      valid = false;
+    } else {
+      field.classList.remove('error');
+    }
+  });
+
+  return valid;
+}
+
+// Clear error on input
+document.querySelectorAll('input, textarea, select').forEach(el => {
+  el.addEventListener('input', () => {
+    const field = el.closest('.field');
+    if (field) field.classList.remove('error');
+  });
+});
+
+// --- Checkbox toggle styling ---
+document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    cb.closest('label').classList.toggle('checked', cb.checked);
+  });
+});
+
+// --- Radio toggle styling ---
+document.querySelectorAll('.radio-group input[type="radio"]').forEach(rb => {
+  rb.addEventListener('change', () => {
+    const group = rb.closest('.radio-group');
+    group.querySelectorAll('label').forEach(l => l.classList.remove('checked'));
+    rb.closest('label').classList.add('checked');
+  });
+});
+
+// --- Readiness scale ---
+document.querySelectorAll('#readinessScale .scale-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#readinessScale .scale-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    readinessVal = parseInt(btn.dataset.val);
+    document.getElementById('readinessInput').value = readinessVal;
+    const field = btn.closest('.field');
+    if (field) field.classList.remove('error');
+  });
+});
+
+// --- Collect checkboxes ---
+function getChecked(name) {
+  return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(c => c.value);
+}
+
+// --- Collect radio ---
+function getRadio(name) {
+  const sel = document.querySelector(`input[name="${name}"]:checked`);
+  return sel ? sel.value : '';
+}
+
+// --- Submit ---
+async function submitForm() {
+  if (!validateStep(6)) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const data = {
+    // Step 1
+    firstName: document.querySelector('[name="firstName"]').value.trim(),
+    email: document.querySelector('[name="email"]').value.trim(),
+    phone: document.querySelector('[name="phone"]').value.trim(),
+    businessName: document.querySelector('[name="businessName"]').value.trim(),
+    website: document.querySelector('[name="website"]').value.trim(),
+    businessDescription: document.querySelector('[name="businessDescription"]').value.trim(),
+    yearsRunning: document.querySelector('[name="yearsRunning"]').value,
+    revenueRange: document.querySelector('[name="revenueRange"]').value,
+    teamSize: document.querySelector('[name="teamSize"]').value,
+    industry: document.querySelector('[name="industry"]').value,
+
+    // Step 2
+    dailyRole: document.querySelector('[name="dailyRole"]').value.trim(),
+    brandStructure: getRadio('brandStructure'),
+    offerLadder: document.querySelector('[name="offerLadder"]').value.trim(),
+    activeOffers: document.querySelector('[name="activeOffers"]').value.trim(),
+    customerJourney: document.querySelector('[name="customerJourney"]').value.trim(),
+
+    // Step 3
+    idealCustomer: document.querySelector('[name="idealCustomer"]').value.trim(),
+    leadSources: getChecked('leadSources'),
+    leadProcess: document.querySelector('[name="leadProcess"]').value.trim(),
+    onboarding: document.querySelector('[name="onboarding"]').value.trim(),
+    serviceDelivery: document.querySelector('[name="serviceDelivery"]').value.trim(),
+    followUp: document.querySelector('[name="followUp"]').value.trim(),
+
+    // Step 4
+    websitePlatform: document.querySelector('[name="websitePlatform"]').value,
+    emailSystem: document.querySelector('[name="emailSystem"]').value.trim(),
+    crm: document.querySelector('[name="crm"]').value.trim(),
+    bookingTool: document.querySelector('[name="bookingTool"]').value.trim(),
+    paymentProcessor: document.querySelector('[name="paymentProcessor"]').value.trim(),
+    accounting: document.querySelector('[name="accounting"]').value.trim(),
+    otherTools: document.querySelector('[name="otherTools"]').value.trim(),
+    aiTools: getChecked('aiTools'),
+    techComfort: getRadio('techComfort'),
+    socialHandles: document.querySelector('[name="socialHandles"]').value.trim(),
+    googleBusiness: getRadio('googleBusiness'),
+    websiteLastUpdated: document.querySelector('[name="websiteLastUpdated"]').value,
+    hasAnalytics: getRadio('hasAnalytics'),
+
+    // Step 5
+    activeFunnels: document.querySelector('[name="activeFunnels"]').value.trim(),
+    postOptIn: document.querySelector('[name="postOptIn"]').value.trim(),
+    postPurchase: document.querySelector('[name="postPurchase"]').value.trim(),
+    emailListSize: document.querySelector('[name="emailListSize"]').value,
+    emailFrequency: document.querySelector('[name="emailFrequency"]').value,
+    socialPlatforms: getChecked('socialPlatforms'),
+    contentStrategy: getRadio('contentStrategy'),
+    brandConsistency: getRadio('brandConsistency'),
+    leadTracking: getRadio('leadTracking'),
+    currentAutomations: getRadio('currentAutomations'),
+    reporting: document.querySelector('[name="reporting"]').value.trim(),
+
+    // New Step 4 fields
+    esignTool: document.querySelector('[name="esignTool"]').value,
+    usesTelegram: getRadio('usesTelegram'),
+    dailyEmailVolume: document.querySelector('[name="dailyEmailVolume"]').value,
+
+    // Step 6
+    bottleneck: document.querySelector('[name="bottleneck"]').value.trim(),
+    moneyLeaks: document.querySelector('[name="moneyLeaks"]').value.trim(),
+    manualPain: document.querySelector('[name="manualPain"]').value.trim(),
+    magicWand: document.querySelector('[name="magicWand"]').value.trim(),
+    previousAttempts: document.querySelector('[name="previousAttempts"]').value.trim(),
+    aiInterest: document.querySelector('[name="aiInterest"]').value.trim(),
+    ninetyDayVision: document.querySelector('[name="ninetyDayVision"]').value.trim(),
+    decisionMaker: document.querySelector('[name="decisionMaker"]').value,
+    timeline: document.querySelector('[name="timeline"]').value,
+    readiness: readinessVal,
+    handsOn: getRadio('handsOn'),
+    additionalNotes: document.querySelector('[name="additionalNotes"]').value.trim(),
+    prefillSource: prefillData ? 'aws_assessment' : 'none',
+
+    // NDIS fields (only populated when industry = ndis)
+    ndisServiceTypes: getChecked('ndisServiceTypes'),
+    ndisParticipantCount: (document.querySelector('[name="ndisParticipantCount"]') || {}).value || '',
+    ndisStaffCount: (document.querySelector('[name="ndisStaffCount"]') || {}).value || '',
+    ndisTeamStructure: (document.querySelector('[name="ndisTeamStructure"]') || {}).value || '',
+    ndisIntakeProcess: (document.querySelector('[name="ndisIntakeProcess"]') || {}).value || '',
+    ndisProgressNotes: (document.querySelector('[name="ndisProgressNotes"]') || {}).value || '',
+    ndisPlanTypes: getChecked('ndisPlanTypes'),
+    ndisInvoicing: (document.querySelector('[name="ndisInvoicing"]') || {}).value || '',
+    ndisTools: getChecked('ndisTools'),
+    ndisRostering: getChecked('ndisRostering'),
+    ndisCompliance: getChecked('ndisCompliance'),
+    ndisBiggestPain: (document.querySelector('[name="ndisBiggestPain"]') || {}).value || '',
+    ndisOtherTools: (document.querySelector('[name="ndisOtherTools"]') || {}).value || '',
+  };
+
+  try {
+    const resp = await fetch('/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await resp.json();
+
+    if (result.success) {
+      // Show thank you
+      document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+      document.querySelector('.form-section[data-step="done"]').classList.add('active');
+      document.getElementById('progressFill').style.width = '100%';
+      document.getElementById('progressLabel').textContent = 'Complete';
+      document.querySelectorAll('.step-dot').forEach(d => d.classList.add('done'));
+    } else {
+      alert(result.error || 'Something went wrong. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Submit Discovery Form';
+    }
+  } catch (err) {
+    alert('Connection error. Please check your internet and try again.');
+    btn.disabled = false;
+    btn.textContent = 'Submit Discovery Form';
+  }
+}
+
+// --- Email lookup & prefill ---
+async function lookupEmail() {
+  const email = document.getElementById('lookupEmail').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('lookupEmail').style.borderColor = '#D4574E';
+    return;
+  }
+
+  const btn = document.getElementById('lookupBtn');
+  btn.disabled = true;
+  btn.textContent = 'Checking...';
+
+  try {
+    const resp = await fetch('/lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    const result = await resp.json();
+    const resultDiv = document.getElementById('lookupResult');
+    resultDiv.style.display = 'block';
+
+    if (result.found) {
+      prefillData = result.data;
+      const name = result.data.first_name || '';
+      resultDiv.innerHTML = '<div style="background:#F0F7F4;padding:16px;border-radius:8px;border-left:3px solid #2D8A4E;margin:16px 0;">' +
+        '<p style="margin:0;font-size:14px;color:#2D8A4E;font-weight:500;">Found you' + (name ? ', ' + name : '') + '! We have your basics from last time. Let\'s dive into the deeper stuff.</p></div>';
+      btn.textContent = 'Continue';
+      btn.disabled = false;
+      btn.onclick = function() { startFormWithPrefill(); };
+    } else {
+      resultDiv.innerHTML = '<div style="background:#FDF6F2;padding:16px;border-radius:8px;border-left:3px solid #B7634B;margin:16px 0;">' +
+        '<p style="margin:0;font-size:14px;">No worries - we haven\'t met yet. Let\'s start from scratch.</p></div>';
+      btn.textContent = 'Get started';
+      btn.disabled = false;
+      btn.onclick = function() { skipLookup(); };
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Look me up';
+    skipLookup();
+  }
+}
+
+function startFormWithPrefill() {
+  document.getElementById('lookupSection').style.display = 'none';
+  document.getElementById('stepDots').style.display = 'flex';
+  document.querySelector('.progress-bar').style.display = 'block';
+
+  if (prefillData) {
+    const d = prefillData;
+    if (d.first_name) document.querySelector('[name="firstName"]').value = d.first_name;
+    if (d.email) document.querySelector('[name="email"]').value = d.email;
+    if (d.business_name) document.querySelector('[name="businessName"]').value = d.business_name;
+    if (d.website) document.querySelector('[name="website"]').value = d.website;
+    if (d.business_description) document.querySelector('[name="businessDescription"]').value = d.business_description;
+
+    // Pre-fill checkbox groups (best-effort mapping)
+    if (d.social_platforms && Array.isArray(d.social_platforms)) {
+      d.social_platforms.forEach(function(p) {
+        // Map AWS values to AIOS values
+        var mapped = p;
+        if (p === 'facebook_personal' || p === 'facebook_page') mapped = 'facebook';
+        var cb = document.querySelector('input[name="socialPlatforms"][value="' + mapped + '"]');
+        if (cb) { cb.checked = true; cb.closest('label').classList.add('checked'); }
+      });
+    }
+    if (d.lead_sources && Array.isArray(d.lead_sources)) {
+      d.lead_sources.forEach(function(s) {
+        var mapped = s;
+        if (s === 'referrals') mapped = 'referral';
+        if (s === 'social_organic') mapped = 'social_organic';
+        if (s === 'networking') mapped = 'events';
+        var cb = document.querySelector('input[name="leadSources"][value="' + mapped + '"]');
+        if (cb) { cb.checked = true; cb.closest('label').classList.add('checked'); }
+      });
+    }
+    if (d.ai_experience && Array.isArray(d.ai_experience)) {
+      d.ai_experience.forEach(function(t) {
+        var cb = document.querySelector('input[name="aiTools"][value="' + t + '"]');
+        if (cb) { cb.checked = true; cb.closest('label').classList.add('checked'); }
+      });
+    }
+  }
+
+  showStep(1);
+}
+
+function skipLookup() {
+  document.getElementById('lookupSection').style.display = 'none';
+  document.getElementById('stepDots').style.display = 'flex';
+  document.querySelector('.progress-bar').style.display = 'block';
+
+  // Carry over email if they typed one
+  var email = document.getElementById('lookupEmail').value.trim();
+  if (email) document.querySelector('[name="email"]').value = email;
+
+  showStep(1);
+}
+</script>
 
 </body>
 </html>
