@@ -77,6 +77,10 @@ app.post('/api/precall', async (req, res) => {
       });
     }
     status.supabase = sbRes.ok;
+    if (!sbRes.ok) {
+      const errBody = await sbRes.text().catch(() => '');
+      console.error(`Supabase insert failed: HTTP ${sbRes.status} - ${errBody.slice(0, 300)}`);
+    }
     console.log(`Supabase: saved precall for ${d.business} (ok=${sbRes.ok})`);
   } catch (e) {
     console.error('Supabase save error:', e);
