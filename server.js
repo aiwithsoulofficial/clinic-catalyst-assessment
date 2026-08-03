@@ -34,24 +34,30 @@ app.post('/api/precall', async (req, res) => {
     return res.status(400).json({ success: false, error: 'Business name required' });
   }
 
-  // Save to Supabase (record of every submission regardless of GHL state)
+  // Save to Supabase (record of every submission regardless of GHL state).
+  // Table columns are: name, business, email, phone, source, notes, status + scores.
+  // The full assessment lives in `notes`.
   try {
+    const assessmentText = [
+      'PRE-CALL ASSESSMENT',
+      `Website: ${d.website || 'N/A'}`,
+      `Social: ${d.social || 'N/A'}`,
+      `Ads: ${d.ads || 'N/A'}`,
+      `Ad spend: ${d.adspend || 'N/A'}`,
+      `Booking system: ${d.booking || 'N/A'}`,
+      `CRM: ${d.crm || 'N/A'}`,
+      `AI tools: ${d.ai || 'N/A'}`,
+      `HATE (drains energy): ${d.hate || 'N/A'}`,
+      `LOVE (would do all day): ${d.love || 'N/A'}`
+    ].join('\n');
     const row = {
       name: d.business,
       business: d.business,
+      email: d.email || null,
       source: 'precall-assessment',
-      website: d.website || null,
-      social_handle: d.social || null,
-      ads_status: d.ads || null,
-      ad_spend: d.adspend || null,
-      booking_system: d.booking || null,
-      crm: d.crm || null,
-      ai_tools: d.ai || null,
-      pain_hate: d.hate || null,
-      pain_love: d.love || null
+      notes: assessmentText
     };
-    if (d.email) row.email = d.email;
-    let sbRes = await fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_leads', {
+    const sbRes = await fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_leads', {
       method: 'POST',
       headers: {
         'apikey': SUPABASE_KEY,
@@ -61,21 +67,6 @@ app.post('/api/precall', async (req, res) => {
       },
       body: JSON.stringify(row)
     });
-    if (!sbRes.ok && d.email) {
-      // table may not have an email column - retry with email folded into the record name
-      delete row.email;
-      row.name = `${d.business} <${d.email}>`;
-      sbRes = await fetch(SUPABASE_URL + '/rest/v1/clinic_catalyst_leads', {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_KEY,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify(row)
-      });
-    }
     status.supabase = sbRes.ok;
     if (!sbRes.ok) {
       const errBody = await sbRes.text().catch(() => '');
