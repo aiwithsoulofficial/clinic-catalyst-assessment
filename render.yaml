@@ -15,6 +15,10 @@ services:
         value: aiwithsoulofficial@gmail.com
       - key: SMTP_PASS
         sync: false
+      - key: GHL_API_KEY
+        sync: false
+      - key: GHL_LOCATION_ID
+        sync: false
     headers:
       - path: /*
         name: X-Frame-Options

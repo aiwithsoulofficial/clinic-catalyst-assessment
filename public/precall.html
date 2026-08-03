@@ -225,6 +225,12 @@
   </div>
 
   <div class="field">
+    <label>Your email</label>
+    <div class="hint">The one you used to book your session, so we can match you up</div>
+    <input type="email" id="f-email" placeholder="e.g. you@yourclinic.com.au">
+  </div>
+
+  <div class="field">
     <label>Website</label>
     <input type="url" id="f-website" placeholder="e.g. www.yoursite.com.au">
   </div>
@@ -308,6 +314,7 @@
 
     const data = {
       business: business,
+      email: document.getElementById('f-email').value.trim(),
       website: document.getElementById('f-website').value.trim(),
       social: document.getElementById('f-social').value.trim(),
       ads: document.getElementById('f-ads').value,
