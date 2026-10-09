@@ -6,7 +6,7 @@ const app = express();
 const AIOS_BACKEND = 'https://aios-assessment.onrender.com';
 
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://jiquevvzrdavgqonvvug.supabase.co';
-const SUPABASE_KEY = process.env.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || 'sb_publishable_siNrWACQh9utYNJ_g6Mt3Q_vWuxhkaJ';
 const SMTP_USER = process.env.SMTP_USER || 'aiwithsoulofficial@gmail.com';
 const SMTP_PASS = process.env.SMTP_PASS;
 const GHL_API_KEY = process.env.GHL_API_KEY;
